@@ -5,6 +5,8 @@
 
 package controllers;
 
+import forms.CreateNewsFormChecker;
+import entities.News;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,19 +18,32 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Igor Martellote
  */
-@WebServlet("/user/logout")
-public class Logout extends HttpServlet {
+@WebServlet("/user/createNews")
+@SuppressWarnings("serial")
+public class CreateNews extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect("/projetJEE/");
+        if (req.getSession().getAttribute("user") != null) {
+            req.getRequestDispatcher("/WEB-INF/user/createNews.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/");
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect("/projetJEE/");
+        CreateNewsFormChecker cnfc = new CreateNewsFormChecker(req);
+        News news = cnfc.checkForm();
+        if (cnfc.getErrors().isEmpty()) {
+            resp.sendRedirect(req.getContextPath() + "/");
+
+        } else {
+
+            req.getRequestDispatcher("/WEB-INF/user/createNews.jsp").forward(req, resp);
+        }
+
     }
+
 
 }
