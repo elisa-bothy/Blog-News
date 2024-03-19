@@ -4,6 +4,7 @@
  */
 package filters;
 
+import entities.Person;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -31,17 +32,17 @@ public class adminAccess implements Filter{
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         //travail en amont
         HttpServletRequest req = (HttpServletRequest) request;
-//        HttpSession session = req.getSession(false);
-//        Person obj = (Person)session.getAttribute("user");
-//        if(session == null 
-//                || obj == null || obj.getId() != 1
-//                ){
-//            ((HttpServletResponse)response).sendError(403);
-//        }else{
-//            //appel filtre suivant
-//            chain.doFilter(request, response);
-//            //travail en aval : rien
-//        }
+        HttpSession session = req.getSession(false);
+        Person obj = (Person)session.getAttribute("user");
+        if(session == null 
+                || obj == null || obj.getId() != 1
+                ){
+            ((HttpServletResponse)response).sendError(403);
+        }else{
+            //appel filtre suivant
+            chain.doFilter(request, response);
+            //travail en aval : rien
+        }
     }
 
     @Override
