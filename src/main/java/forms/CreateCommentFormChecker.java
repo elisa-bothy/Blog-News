@@ -4,6 +4,7 @@
  */
 package forms;
 
+import dao.DAOFactory;
 import entities.Comment;
 import entities.Person;
 import java.sql.Timestamp;
@@ -32,9 +33,9 @@ public class CreateCommentFormChecker extends FormChecker<Comment> {
         // Vérifier les données du formulaire
         // Vérifier si les champs sont remplis
         if (content.length() == 0) {
-            setError("content", "Ce champ doit être rempli.");
+            setErrors("content", "Ce champ doit être rempli.");
         } else {
-            DAOFactory.getArticleDao().save(obj);
+            DAOFactory.getCommentDao().save(obj);
            
         }     
                  

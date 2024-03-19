@@ -5,6 +5,7 @@
 
 package forms;
 
+import dao.PersonDao;
 import entities.Person;
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,13 +43,13 @@ public class SignUpFormChecker extends FormChecker<Person> {
         if (!pwdForm2.equals(pwdForm)) {
             setErrors("pwdForm2", "Les mots de passe sont pas pareil");
         }
-        PersonDAO pdao = new PersonDAO();
+        PersonDao pdao = new PersonDao();
         Person fromDb = pdao.read(login);
         if (errors.isEmpty()) {
             if (!(fromDb == null)) {
                 setErrors("already", "user utilise");
             } else {
-                pdao.create(obj);
+                pdao.save(obj);
             }
 
         }

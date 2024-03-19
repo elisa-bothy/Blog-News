@@ -4,7 +4,9 @@
  */
 package controllers;
 
+import dao.DAOFactory;
 import entities.Comment;
+import forms.CreateCommentFormChecker;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +27,7 @@ public class News extends HttpServlet {
         try {
             // Récupérer l'ID de l'article depuis l'URL
             int id = Integer.valueOf(request.getParameter("id"));
-            News news = DAOFactory.getNewsDao().read(id);
+            entities.News news = DAOFactory.getNewsDao().read(id);
             Comment comment = DAOFactory.getCommentDao().read(id);
             if (news == null) {
                 // Gérer l'erreur si l'article avec l'ID spécifié n'existe pas
