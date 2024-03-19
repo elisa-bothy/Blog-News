@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import entities.Comment;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +26,7 @@ public class News extends HttpServlet {
             // Récupérer l'ID de l'article depuis l'URL
             int id = Integer.valueOf(request.getParameter("id"));
             News news = DAOFactory.getNewsDao().read(id);
+            Comment comment = DAOFactory.getCommentDao().read(id);
             if (news == null) {
                 // Gérer l'erreur si l'article avec l'ID spécifié n'existe pas
                 throw new IllegalArgumentException();
@@ -45,11 +47,11 @@ public class News extends HttpServlet {
             throws ServletException, IOException {
         // récupérer les données du formulaire et les vérifier
         CreateCommentFormChecker fc = new CreateCommentFormChecker(req);
-        News news = fc.checkForm();
+        Comment comment = fc.checkForm();
         // Si erreur => affichage formulaire sinon affichage page OK
         if (fc.getErrors().isEmpty()) {
-            req.setAttribute("news", news);
-            req.getRequestDispatcher("/WEB-INF/user/createArticle.jsp")
+            req.setAttribute("comment", comment);
+            req.getRequestDispatcher("/WEB-INF/visitor/news.jsp")
        .forward(req, resp);
         } 
     }

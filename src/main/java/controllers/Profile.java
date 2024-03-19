@@ -5,6 +5,7 @@
 package controllers;
 
 import entities.Person;
+import forms.ChangePasswordFormChecker;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
