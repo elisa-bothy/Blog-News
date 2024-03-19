@@ -34,11 +34,11 @@ public class CreateNewsFormChecker extends FormChecker<News> {
         news.setCreated(Timestamp.valueOf(LocalDateTime.now()));
 
         if (title.trim().length() == 0) {
-            System.out.println("titlearticle = " + title);
+            System.out.println("title = " + title);
             setErrors("title", "Ce champ doit etre rempli au moins 5 caracteres");
         }
         if (content.length() == 0) {
-            System.out.println("contentarticle = " + content);
+            System.out.println("content = " + content);
             setErrors("content", "Ce champ doit etre rempli au moins 15 caracteres");
         }
 

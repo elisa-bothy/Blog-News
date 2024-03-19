@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Igor Martellote
  */
-@WebServlet("/user/createNews")
+@WebServlet("/createNews")
 @SuppressWarnings("serial")
 public class CreateNews extends HttpServlet {
 
