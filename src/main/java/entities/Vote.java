@@ -12,6 +12,7 @@ import java.util.Objects;
  *
  * @author Guillaume Rostagnat
  */
+@SuppressWarnings("serial")
 public class Vote implements Serializable, Identifiable{
     private Integer id;
     private int score;

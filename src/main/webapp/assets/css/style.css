@@ -42,6 +42,7 @@ header{
     left: 0;
     width: 100%;
     display: flex;
+    background-color: var(--menu-background-color);
     justify-content: center;
     position: fixed;
     z-index: 1;
@@ -86,6 +87,11 @@ header  a :hover{
 header ul a:hover{
     background-color: var(--menu-hoover-background-color);
     color: var(--menu-text-color);
+}
+
+header img{
+    display: flex;
+    justify-content: flex-start;
 }
 
 ul, div{

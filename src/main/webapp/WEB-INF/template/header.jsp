@@ -2,7 +2,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <header>
     <ul>
-        <a href="<c:url value="/visitor/index"/>"><li>Accueil</li></a>
+        <a href="<c:url value="/visitor/index"/>">
+            <img src="<c:url value="/assets/photos/news.png"/>" alt="alt"/>
+        </a>
         <c:choose>
             <c:when test="${empty sessionScope.user}">
                 <a href="<c:url value="/visitor/connect" />"><li>Connexion</li></a>
