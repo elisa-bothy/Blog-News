@@ -7,5 +7,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/template/template.jsp">
     <jsp:param name="title" value="Inscription"/>
-    <jsp:param name="content" value="/WEB-INF/contents/signUp"/>
+    <jsp:param name="content" value="signUp"/>
 </jsp:include>

@@ -10,7 +10,7 @@
         <label for="loginSignup">Login</label>
     </div>
     <div>
-        <input id="loginSignup" name="loginSignup" value="${requestScope.bean.login}" autofocus="true" />
+        <input id="loginSignup" name="login" value="${requestScope.bean.login}" autofocus="true" />
         <span class="error">${requestScope.errors.already}</span>
     </div>
     <div>
