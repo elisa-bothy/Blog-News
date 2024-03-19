@@ -5,6 +5,7 @@
 
 package forms;
 
+import entities.Person;
 import javax.servlet.http.HttpServletRequest;
 
 /**

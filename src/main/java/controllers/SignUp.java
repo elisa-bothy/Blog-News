@@ -5,6 +5,7 @@
 
 package controllers;
 
+import entities.Person;
 import forms.SignUpFormChecker;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -23,11 +24,13 @@ import javax.servlet.http.HttpSession;
 public class SignUp extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+            throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/visitor/signUp.jsp").forward(req, resp);
     }
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+            throws ServletException, IOException {
         // recuperer les donnes du FORM
         SignUpFormChecker sufc = new SignUpFormChecker(req);
         Person p = sufc.checkForm();

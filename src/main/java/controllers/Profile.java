@@ -5,7 +5,6 @@
 package controllers;
 
 import entities.Person;
-import forms.ConnectFormChecker;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,37 +17,38 @@ import javax.servlet.http.HttpSession;
  *
  * @author Valentina Sarais
  */
-@WebServlet ("/visitor/connect")
+@WebServlet ("/user/profile")
 @SuppressWarnings("serial")
-public class Connect extends HttpServlet {
-    
+
+public class Profile extends HttpServlet {
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if (session.getAttribute("user") != null) {
-            req.getRequestDispatcher("/WEB-INF/visitor/news.jsp").forward(req, resp);
+      /*  if (req.getSession().getAttribute("user") != null) {
+            req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
         } else {
-            resp.sendRedirect("/visitor/connect");
-        }
+            resp.sendRedirect(req.getContextPath() + "/");
+        }*/
     }
-    
-     @Override
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
-        // récupérer les données du formulaire et les vérifier
-        ConnectFormChecker fc = new ConnectFormChecker(req);
-        Person p = fc.checkForm();
-        // Si erreur => affichage formulaire sinon affichage page OK
-        if (fc.getErrors().isEmpty()) {
-            
-            resp.sendRedirect("/blog/connected");
-        } else {
-            req.getRequestDispatcher("/WEB-INF/connect.jsp")
-                    .forward(req, resp);
+        if (req.getSession().getAttribute("user") == null) {
+            resp.sendRedirect(req.getContextPath() + "/");
+            return;
         }
-    }
+        ChangePasswordFormChecker fc = new ChangePasswordFormChecker(req);
+        Person obj = fc.checkForm();
+      /*  if (fc.getErrors().isEmpty()) {
+            req.setAttribute("changed", "Votre mot de passe a été changé");
+        } else {
+        req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
+    } */
+        
+    }}
     
-}
-  
-   
+
