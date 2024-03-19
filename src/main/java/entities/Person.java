@@ -6,7 +6,6 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.metamodel.IdentifiableType;
 
 /**
  *
@@ -20,12 +19,12 @@ public class Person implements Identifiable, Serializable{
 
     @Override
     public Integer getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return id;
     }
 
     @Override
     public void setId(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.id = id;
     }
 
     public String getLogin() {

@@ -8,7 +8,7 @@ package entities;
  *
  * @author Guillaume Rostagnat
  */
-interface Identifiable {
+public interface Identifiable {
 
     Integer getId();
 
