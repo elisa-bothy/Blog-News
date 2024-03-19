@@ -1,10 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <header>
-    <ul>
+    <div class="logo">
         <a href="<c:url value="/visitor/index"/>">
-            <img src="<c:url value="/assets/photos/news.png"/>" alt="alt"/>
+            <div>
+                <img src="<c:url value="/assets/photos/news.png"/>" alt="alt"/>
+            </div>
         </a>
+    </div>
+    <ul>
         <c:choose>
             <c:when test="${empty sessionScope.user}">
                 <a href="<c:url value="/visitor/connect" />"><li>Connexion</li></a>
