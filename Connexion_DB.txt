@@ -3,5 +3,5 @@ adresse serveur = wp.ldnr.fr
 port du serveur de DB = 3306
 nom de votre DB = cda202302_jee4
 login = cda202302_jee4
-mot de passe = Charybde2024
+    mot de passe = Charybde2024
 
