@@ -18,7 +18,7 @@
     <body>
         <jsp:include page="/WEB-INF/template/header.jspf" />
         <main>
-            <jsp:include page="${param.content}.jspf" />
+            <jsp:include page="/WEB-INF/contents/${param.content}.jspf" />
         </main>
         <jsp:include page="/WEB-INF/template/footer.jspf" />
         <script src="<c:url value="" />"></script> 

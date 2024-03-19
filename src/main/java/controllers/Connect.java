@@ -4,6 +4,8 @@
  */
 package controllers;
 
+import entities.Person;
+import forms.ConnectFormChecker;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,21 +18,37 @@ import javax.servlet.http.HttpSession;
  *
  * @author Valentina Sarais
  */
-@WebServlet ("user/connect")
+@WebServlet ("/user/connect")
 @SuppressWarnings("serial")
 public class Connect extends HttpServlet {
     
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         HttpSession session = req.getSession();
         if (session.getAttribute("user") != null) {
-            req.getRequestDispatcher("/WEB-INF/connected.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/visitor/news.jsp").forward(req, resp);
         } else {
-            resp.sendRedirect("/blog/");
+            resp.sendRedirect("/visitor/connect");
+        }
+    }
+    
+     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+            throws ServletException, IOException {
+        // récupérer les données du formulaire et les vérifier
+        ConnectFormChecker fc = new ConnectFormChecker(req);
+        Person p = fc.checkForm();
+        // Si erreur => affichage formulaire sinon affichage page OK
+        if (fc.getErrors().isEmpty()) {
+            
+            resp.sendRedirect("/blog/connected");
+        } else {
+            req.getRequestDispatcher("/WEB-INF/connect.jsp")
+                    .forward(req, resp);
         }
     }
     
 }
   
-    
-}
+   
