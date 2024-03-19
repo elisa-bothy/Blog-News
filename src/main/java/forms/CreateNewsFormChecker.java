@@ -6,6 +6,7 @@
 package forms;
 
 import javax.servlet.http.HttpServletRequest;
+import dao.NewsDao;
 import entities.News;
 import entities.Person;
 import java.sql.Timestamp;
@@ -24,7 +25,7 @@ public class CreateNewsFormChecker extends FormChecker<News> {
     @Override
     public News checkForm() {
         News news = new News();
-        NewsDAO ndao = new NewsDAO();
+        NewsDao ndao = new NewsDao();
         String title = getParameter("title");
         String content = getParameter("content");
         news.setTitle(title);
@@ -43,7 +44,7 @@ public class CreateNewsFormChecker extends FormChecker<News> {
 
         if (errors.isEmpty()) {
 
-            ndao.create(news);
+            ndao.save(news);
         }
         request.setAttribute("errors", errors);
         request.setAttribute("bean", news);
