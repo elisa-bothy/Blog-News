@@ -4,6 +4,7 @@
  */
 package forms;
 
+import dao.DAOFactory;
 import entities.Person;
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,14 +31,14 @@ public class ChangePasswordFormChecker extends FormChecker<Person>{
         Person user = (Person)request.getSession().getAttribute("user");
         
         if (!user.getPassword().equals(password)) {
-            setError(PASSWORD_FIELD, "Mot de passe incorrect");
+            setErrors(PASSWORD_FIELD, "Mot de passe incorrect");
         }
         if (newPassword.length() < MIN_PWD_LENGTH) {
-            setError(NEW_PASSWORD_FIELD, "Ce champ doit faire au moins " 
+            setErrors(NEW_PASSWORD_FIELD, "Ce champ doit faire au moins " 
                     + MIN_PWD_LENGTH + " lettres.");
         }
         if (!newPassword.equals(verif)) {
-            setError(VERIF_FIELD, "Les mots de passe ne concordent pas.");
+            setErrors(VERIF_FIELD, "Les mots de passe ne concordent pas.");
         }
         if (errors.isEmpty()) {
             user.setPassword(newPassword);

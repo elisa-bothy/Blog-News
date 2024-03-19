@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 public class index extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/visitor/index.jsp").forward(req, resp);
     }
 

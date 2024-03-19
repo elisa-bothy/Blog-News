@@ -28,12 +28,9 @@ public class Profile extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         HttpSession session = req.getSession();
-      /*  if (req.getSession().getAttribute("user") != null) {
             req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
-        } else {
-            resp.sendRedirect(req.getContextPath() + "/");
-        }*/
     }
+       
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) 

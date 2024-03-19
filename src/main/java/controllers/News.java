@@ -4,7 +4,9 @@
  */
 package controllers;
 
+import dao.DAOFactory;
 import entities.Comment;
+import forms.CreateCommentFormChecker;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Valentina Sarais
  */
-@WebServlet ("visitor/news")
+@WebServlet ("/visitor/news")
 @SuppressWarnings("serial")
 public class News extends HttpServlet {
 
@@ -25,7 +27,7 @@ public class News extends HttpServlet {
         try {
             // Récupérer l'ID de l'article depuis l'URL
             int id = Integer.valueOf(request.getParameter("id"));
-            News news = DAOFactory.getNewsDao().read(id);
+            entities.News news = DAOFactory.getNewsDao().read(id);
             Comment comment = DAOFactory.getCommentDao().read(id);
             if (news == null) {
                 // Gérer l'erreur si l'article avec l'ID spécifié n'existe pas
@@ -33,7 +35,7 @@ public class News extends HttpServlet {
             } else {
                 // Passer l'article à la page JSP
                 request.setAttribute("news", news);
-                request.getRequestDispatcher("/WEB-INF/showArticle.jsp").
+                request.getRequestDispatcher("/WEB-INF/visitor/news.jsp").
                         forward(request, response);
             }
         } catch (IllegalArgumentException ex) {
