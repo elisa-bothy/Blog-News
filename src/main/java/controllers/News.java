@@ -28,7 +28,7 @@ public class News extends HttpServlet {
             // Récupérer l'ID de l'article depuis l'URL
             int id = Integer.valueOf(request.getParameter("id"));
             entities.News news = DAOFactory.getNewsDao().read(id);
-            Comment comment = DAOFactory.getCommentDao().read(id);
+            Comment c = DAOFactory.getCommentDao().read(id);
             if (news == null) {
                 // Gérer l'erreur si l'article avec l'ID spécifié n'existe pas
                 throw new IllegalArgumentException();

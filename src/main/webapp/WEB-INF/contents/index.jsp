@@ -3,7 +3,7 @@
 
 <div class="container" id="container">
     <div id="articles">
-        <c:if test="${user != null}">
+        <c:if test="${! empty sessionScope.user}">
             <a href="<c:url value="/user/createNews"/>"><span  class="button">Créer un Nouvelle News</span></a>
         </c:if>
         <div class="bestNews">

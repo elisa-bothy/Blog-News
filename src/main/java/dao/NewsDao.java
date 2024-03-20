@@ -86,7 +86,7 @@ public class NewsDao extends DAO<News> {
         return list;
     }
 
-    public Object listBestN(int qty) {
+    public Collection<News> listBestN(int qty) {
         ArrayList<News> list = new ArrayList<>();
         String sql = "SELECT * FROM news NATURAL JOIN vote ORDER BY `vote`.`score` DESC LIMIT ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)){
@@ -95,7 +95,7 @@ public class NewsDao extends DAO<News> {
             while(rs.next()){
                 News n = new News();
                 n.setId(rs.getInt("id"));
-                n.setTitle(rs.getString("subject"));
+                n.setTitle(rs.getString("title"));
                 n.setContent(rs.getString("content"));
                 n.setCreated(rs.getTimestamp("created"));
                 n.setAuthor(new PersonDao().read(rs.getInt("author")));
@@ -116,7 +116,7 @@ public class NewsDao extends DAO<News> {
             while(rs.next()){
                 News n = new News();
                 n.setId(rs.getInt("id"));
-                n.setTitle(rs.getString("subject"));
+                n.setTitle(rs.getString("title"));
                 n.setContent(rs.getString("content"));
                 n.setCreated(rs.getTimestamp("created"));
                 n.setAuthor(new PersonDao().read(rs.getInt("author")));
