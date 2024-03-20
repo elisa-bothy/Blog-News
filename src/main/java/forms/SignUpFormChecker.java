@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package forms;
 
 import dao.DAOFactory;
 import dao.PersonDao;
 import entities.Person;
 import javax.servlet.http.HttpServletRequest;
+import entities.Person;
+import dao.PersonDao;
 
 /**
  *
@@ -50,7 +51,7 @@ public class SignUpFormChecker extends FormChecker<Person> {
             if (!(fromDb == null)) {
                 setErrors("already", "user utilise");
             } else {
-                DAOFactory.getPersonDao().save(obj);
+                pdao.save(obj);
             }
 
         }

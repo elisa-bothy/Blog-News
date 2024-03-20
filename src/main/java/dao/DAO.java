@@ -47,6 +47,7 @@ public abstract class DAO<T extends Identifiable> {
         } else {
             update(obj);
         }
+
     }
 
     public T read(Integer id) {
