@@ -25,7 +25,7 @@
         </c:forEach>
     </div>
     <c:if test="${! empty sessionScope.user}">
-        <form action="<c:url value="/visitor/news" />" method="post">
+        <form action="<c:url value="/visitor/news?id=${requestScope.news.id}" />" method="post">
             <fieldset>
                 <legend>Ecris ton commentaire ici :</legend>
                 <div>
@@ -34,7 +34,8 @@
                     </textarea>
                 </div>
             </fieldset>
-            <div class="buttons">
+                        <div class="message">${requestScope.messages.newComment}</div>
+                        <div class="buttons">
                 <input type="submit" value="Envoyer">
                 <input type="reset" value="Annuler">
             </div>

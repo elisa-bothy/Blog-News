@@ -4,7 +4,10 @@
  */
 package entities;
 
+import dao.DAOFactory;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -112,5 +115,13 @@ public class News implements Identifiable {
         this.author = author;
     }
     
+    public int getScore() {
+        ArrayList <Vote> votes = (ArrayList <Vote>) DAOFactory.getVoteDao().list();
+        for(Vote vote : votes){
+            if(getId() == vote.getId_news())
+                return vote.getScore();
+        }
+        return 0;
+    }
 
 }

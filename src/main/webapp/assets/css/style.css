@@ -14,7 +14,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     --main-background-color:#EAEFF2;
     --main-text-color:#673F40;
     --best-news-background-color:#D2AE50;
+    --best-news-border-color:#a7893f;
     --news-background-color: #4B8378;
+    --news-border-color: #31534c;
     --footer-background-color: #E4BCB9;
     --footer-text-color: #000000;
     --text-best-news-color:#673F40;
@@ -110,9 +112,10 @@ header a{
     justify-content: flex-start;
 }
 
-img{
+header img{
     position: absolute;
     bottom: 1vh;
+    left: 7%;
 }
 
 main{
@@ -124,6 +127,21 @@ main{
     color: var(--main-text-color);
     justify-content: center;
     align-items: center;
+}
+
+.bNews, .news{
+    width: 25%;
+    height: 60vh;
+}
+
+.bNews{
+    background-color: var(--best-news-background-color);
+    color : var(--text-best-news-color);
+}
+
+.news{
+    background-color: var(--news-background-color);
+    color: var(--text-news-color);
 }
 
 footer{
