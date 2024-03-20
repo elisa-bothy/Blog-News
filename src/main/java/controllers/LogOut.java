@@ -17,18 +17,15 @@ import javax.servlet.http.HttpServletResponse;
  * @author Igor Martellote
  */
 @WebServlet("/user/logout")
-public class Logout extends HttpServlet {
+@SuppressWarnings("serial")
+public class LogOut extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         req.getSession().invalidate();
-        resp.sendRedirect("/projetJEE/");
+        req.getRequestDispatcher("/WEB-INF/visitor/index.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect("/projetJEE/");
-    }
 
 }
