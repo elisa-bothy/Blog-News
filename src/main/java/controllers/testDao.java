@@ -2,27 +2,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package test;
+package controllers;
 
+import dao.CommentDao;
+import dao.DAOFactory;
 import dao.PersonDao;
+import entities.Comment;
 import entities.Person;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
  * @author Guillaume Rostagnat
  */
-@SuppressWarnings("serial")
-public class TestDao {
+@WebServlet("/test")
+public class testDao extends HttpServlet {
 
-    public static void main(String[] args) {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        PersonDao pdao = new PersonDao();
-        Person p = new Person();
+        CommentDao cdao = new CommentDao();
+        Comment c = new Comment();
 
-        p.setLogin("archie");
-        p.setPassword("null");
-        System.out.println(p);
-        pdao.save(p);
+        c.setContent("blabla");
+        c.setCreated(Timestamp.valueOf(LocalDateTime.MIN));
+        c.setAuthor(DAOFactory.getPersonDao().read(1));
+        System.out.println(c);
+        cdao.save(c);
 
 // Créer ou updater une news
 //art.setAuthor(DAOFactory.getPersonDao().read(1));

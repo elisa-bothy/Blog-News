@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class CommentDao extends DAO<Comment> {
 
     public CommentDao() {
-        super("person");
+        super("comment");
     }
 
     @Override
@@ -39,7 +39,7 @@ public class CommentDao extends DAO<Comment> {
     protected void create(Comment obj) {
 
         String sql = "INSERT INTO " + table
-                + " (content, created, author) VALUES (?, ?, ?, ?)";
+                + " (content, created, author, id_news,) VALUES (?, ?, ?, ?)";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, obj.getContent());
             pstmt.setTimestamp(2, obj.getCreated());
