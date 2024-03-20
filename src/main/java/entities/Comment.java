@@ -17,14 +17,16 @@ public class Comment implements Identifiable{
     private String content;
     private Timestamp created;
     private Person author;
+    private int id_news;
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.content);
-        hash = 67 * hash + Objects.hashCode(this.created);
-        hash = 67 * hash + Objects.hashCode(this.author);
+        int hash = 3;
+        hash = 13 * hash + Objects.hashCode(this.id);
+        hash = 13 * hash + Objects.hashCode(this.content);
+        hash = 13 * hash + Objects.hashCode(this.created);
+        hash = 13 * hash + Objects.hashCode(this.author);
+        hash = 13 * hash + this.id_news;
         return hash;
     }
 
@@ -40,6 +42,9 @@ public class Comment implements Identifiable{
             return false;
         }
         final Comment other = (Comment) obj;
+        if (this.id_news != other.id_news) {
+            return false;
+        }
         if (!Objects.equals(this.content, other.content)) {
             return false;
         }
@@ -52,6 +57,15 @@ public class Comment implements Identifiable{
         return Objects.equals(this.author, other.author);
     }
 
+    
+    public int getId_news() {
+        return id_news;
+    }
+
+    public void setId_news(int id_news) {
+        this.id_news = id_news;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -60,10 +74,12 @@ public class Comment implements Identifiable{
         sb.append(", content=").append(content);
         sb.append(", created=").append(created);
         sb.append(", author=").append(author);
+        sb.append(", id_news=").append(id_news);
         sb.append('}');
         return sb.toString();
     }
 
+   
     public Integer getId() {
         return id;
     }

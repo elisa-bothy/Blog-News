@@ -1,3 +1,9 @@
+<%-- 
+    Document   : adminNews
+    Created on : 20 mars 2024, 09:52:53
+    Author     : Valentina Sarais
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <main>
@@ -9,7 +15,7 @@
     <div class="error">${requestScope.errorMsg}</div>
     <div>
         <c:forEach var="comment" items="${requestScope.comments}">
-            <c:if test="${comment.id == requestScope.news.id}">
+            <c:if test="${requestScope.comment.id} == ${requestScope.news.id}">
                 <comment>
                     <div>${comment.content}</div>
                     <div class="under">&Eacute;crit par ${comment.author.login} le ${comment.created}</div>
@@ -33,3 +39,4 @@
         </div>
     </form>
 </main>
+

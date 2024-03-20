@@ -86,7 +86,7 @@ public class NewsDao extends DAO<News> {
         return list;
     }
 
-    public Collection<News> listBestN(int qty) {
+    public Object listBestN(int qty) {
         ArrayList<News> list = new ArrayList<>();
         String sql = "SELECT * FROM news NATURAL JOIN vote ORDER BY `vote`.`score` DESC LIMIT ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)){
