@@ -120,7 +120,7 @@ header img{
 
 main{
     width: 100%;
-    height: 180vh;
+    height: auto;
     margin-top: 10vh;
     text-align: center;
     background-color: var(--main-background-color);
@@ -129,9 +129,67 @@ main{
     align-items: center;
 }
 
+#articles{
+
+}
+
+.img-news{
+    height: 80vh;
+}
+
+.img-news img{
+
+}
+
+.text-news{
+    height: 20vh;
+}
+
+.text-plus{
+    display: flex;
+    justify-content: center;
+}
+
+.img-news, .text-news{
+
+}
+
+.score-news{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.score-news img{
+    width: 20%;
+}
+
+.plus-news{
+
+}
+
+.plus-news img{
+    width: 15%;
+}
+
+.bNews:hover{
+    border: 2px solid var(--best-news-border-color);
+}
+
+.news:hover{
+    border: 2px solid var(--news-border-color);
+}
+
 .bNews, .news{
     width: 25%;
     height: 60vh;
+    display: inline-flex;
+    border: 2px solid transparent; 
+    border-radius: 5%;
+    margin: 2vh;
+    padding: 2vh;
 }
 
 .bNews{
@@ -142,6 +200,12 @@ main{
 .news{
     background-color: var(--news-background-color);
     color: var(--text-news-color);
+}
+
+.news-content {
+    max-height: 6vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 footer{
