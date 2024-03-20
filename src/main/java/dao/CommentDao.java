@@ -90,4 +90,19 @@ public class CommentDao extends DAO<Comment> {
         return list;
     }
 
+    public Comment readContent(String content) {
+        Comment obj = null;
+        String sql = "SELECT * FROM " + table + " WHERE content= ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, content);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.first()) {
+                obj = createObject(rs);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors de la lecture : " + ex.getMessage());
+        }
+        return obj;
+    }
+
 }
