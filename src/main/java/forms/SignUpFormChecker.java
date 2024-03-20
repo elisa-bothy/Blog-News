@@ -5,6 +5,7 @@
 
 package forms;
 
+import dao.DAOFactory;
 import dao.PersonDao;
 import entities.Person;
 import javax.servlet.http.HttpServletRequest;
@@ -49,7 +50,7 @@ public class SignUpFormChecker extends FormChecker<Person> {
             if (!(fromDb == null)) {
                 setErrors("already", "user utilise");
             } else {
-                pdao.save(obj);
+                DAOFactory.getPersonDao().save(obj);
             }
 
         }

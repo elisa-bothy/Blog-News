@@ -25,12 +25,7 @@ public class Connect extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        if (session.getAttribute("user") != null) {
-            req.getRequestDispatcher("/WEB-INF/visitor/news.jsp").forward(req, resp);
-        } else {
-            resp.sendRedirect("/visitor/connect");
-        }
+        req.getRequestDispatcher("/WEB-INF/visitor/connect.jsp").forward(req, resp);
     }
     
      @Override
@@ -41,10 +36,11 @@ public class Connect extends HttpServlet {
         Person p = fc.checkForm();
         // Si erreur => affichage formulaire sinon affichage page OK
         if (fc.getErrors().isEmpty()) {
-            
-            resp.sendRedirect("/blog/connected");
+            HttpSession session = req.getSession();
+            session.setAttribute("user", p);
+            resp.sendRedirect(req.getContextPath()+"/visitor/index");
         } else {
-            req.getRequestDispatcher("/WEB-INF/connect.jsp")
+            req.getRequestDispatcher("/WEB-INF/visitor/connect.jsp")
                     .forward(req, resp);
         }
     }
