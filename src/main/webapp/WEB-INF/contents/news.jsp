@@ -24,19 +24,21 @@
             </c:if>
         </c:forEach>
     </div>
-    <form action="<c:url value="/visitor/news" />" method="post">
-        <fieldset>
-            <legend>Ecris ton commentaire ici :</legend>
-            <div>
-                <textarea id="content" name="content" type="content">
-                    <c:out value="${requestScope.comment.content}" escapeXml="true" />
-                </textarea>
+    <c:if test="${! empty sessionScope.user}">
+        <form action="<c:url value="/visitor/news" />" method="post">
+            <fieldset>
+                <legend>Ecris ton commentaire ici :</legend>
+                <div>
+                    <textarea id="content" name="content" type="content">
+                        <c:out value="${requestScope.comment.content}" escapeXml="true" />
+                    </textarea>
+                </div>
+            </fieldset>
+            <div class="buttons">
+                <input type="submit" value="Envoyer">
+                <input type="reset" value="Annuler">
             </div>
-        </fieldset>
-        <div class="buttons">
-            <input type="submit" value="Envoyer">
-            <input type="reset" value="Annuler">
-        </div>
-    </form>
+        </form>
+    </c:if>
 </main>
 
