@@ -28,13 +28,14 @@ public class News extends HttpServlet {
             // Récupérer l'ID de l'article depuis l'URL
             int id = Integer.valueOf(request.getParameter("id"));
             entities.News news = DAOFactory.getNewsDao().read(id);
-            Comment c = DAOFactory.getCommentDao().read(id);
+            Comment comment = DAOFactory.getCommentDao().read(id);
             if (news == null) {
                 // Gérer l'erreur si l'article avec l'ID spécifié n'existe pas
                 throw new IllegalArgumentException();
             } else {
                 // Passer l'article à la page JSP
                 request.setAttribute("news", news);
+                request.setAttribute("comments", DAOFactory.getCommentDao().list());
                 request.getRequestDispatcher("/WEB-INF/visitor/news.jsp").
                         forward(request, response);
             }

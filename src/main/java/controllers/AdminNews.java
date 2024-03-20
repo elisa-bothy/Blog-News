@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package controllers;
 
+import dao.DAOFactory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,16 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Igor Martellote
+ * @author Guillaume Rostagnat
  */
-
-@WebServlet("/user/logOut")
+@WebServlet("/admin/news")
 @SuppressWarnings("serial")
-public class LogOut extends HttpServlet {
+public class AdminNews extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect(req.getContextPath()+"/visitor/index");
+        req
+                .setAttribute("allNews", DAOFactory.getNewsDao().list());
+        req
+                .getRequestDispatcher("/WEB-INF/admin/adminNews.jsp").forward(req, resp);
     }
+
 }

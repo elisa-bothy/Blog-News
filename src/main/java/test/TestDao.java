@@ -19,8 +19,8 @@ public class TestDao {
         PersonDao pdao = new PersonDao();
         Person p = new Person();
 
-        p.setLogin("test");
-        p.setPassword("test");
+        p.setLogin("archie");
+        p.setPassword("null");
         System.out.println(p);
         pdao.save(p);
 

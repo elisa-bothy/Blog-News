@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package controllers;
 
+import entities.Comment;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,16 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Igor Martellote
+ * @author Guillaume Rostagnat
  */
-
-@WebServlet("/user/logOut")
+@WebServlet("/admin/validatecomm")
 @SuppressWarnings("serial")
-public class LogOut extends HttpServlet {
+public class ValidateComm extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect(req.getContextPath()+"/visitor/index");
+        int id = Integer.parseInt(req.getParameter("commId"));
+        entities.Comment comment = new Comment();
+        if (comment != null) {
+            
+        }
+
     }
 }
