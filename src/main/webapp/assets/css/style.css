@@ -83,7 +83,10 @@ header a :visited{
 header a :active{
     color: var(--menu-text-color);
 }
-header a:hover{
+header  a :hover{
+    color: var(--menu-text-color);
+}
+header ul a:hover{
     background-color: var(--menu-hoover-background-color);
     color: var(--menu-text-color);
 }

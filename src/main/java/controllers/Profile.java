@@ -41,12 +41,10 @@ public class Profile extends HttpServlet {
         }
         ChangePasswordFormChecker fc = new ChangePasswordFormChecker(req);
         Person obj = fc.checkForm();
-      /*  if (fc.getErrors().isEmpty()) {
+        if (fc.getErrors().isEmpty()) {
             req.setAttribute("changed", "Votre mot de passe a été changé");
-        } else {
-        req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
-    } */
-        
+            req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
+        } 
     }}
     
 

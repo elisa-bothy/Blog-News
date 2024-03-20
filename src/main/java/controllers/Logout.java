@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Igor Martellote
  */
-@WebServlet("/logout")
+@WebServlet("/user/logout")
 public class Logout extends HttpServlet {
 
     @Override
@@ -28,7 +28,7 @@ public class Logout extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();
-        resp.sendRedirect("/Blog1990/");
+        resp.sendRedirect("/projetJEE/");
     }
 
 }

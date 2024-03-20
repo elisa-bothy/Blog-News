@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package controllers;
 
 import entities.Person;
@@ -46,6 +45,5 @@ public class SignUp extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/visitor/signUp.jsp").forward(req, resp);
         }
     }
-
 
 }
