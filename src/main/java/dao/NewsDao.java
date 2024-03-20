@@ -36,7 +36,7 @@ public class NewsDao extends DAO<News> {
     }
 
     @Override
-    protected void create(News obj) {
+    public void create(News obj) {
         String sql = "INSERT INTO " + table
                 + " (title, content, created, author) VALUES (?, ?, ?, ?)";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {

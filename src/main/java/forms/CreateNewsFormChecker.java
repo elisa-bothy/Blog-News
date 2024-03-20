@@ -28,23 +28,25 @@ public class CreateNewsFormChecker extends FormChecker<News> {
         NewsDao ndao = new NewsDao();
         String title = getParameter("title");
         String content = getParameter("content");
+
         news.setTitle(title);
         news.setContent(content);
         news.setAuthor((Person) request.getSession().getAttribute("user"));
         news.setCreated(Timestamp.valueOf(LocalDateTime.now()));
 
         if (title.trim().length() == 0) {
-            System.out.println("title = " + title);
+
             setErrors("title", "Ce champ doit etre rempli au moins 5 caracteres");
         }
         if (content.length() == 0) {
-            System.out.println("content = " + content);
+
             setErrors("content", "Ce champ doit etre rempli au moins 15 caracteres");
         }
 
         if (errors.isEmpty()) {
 
             ndao.save(news);
+            System.out.println("news = " + news);
         }
         request.setAttribute("errors", errors);
         request.setAttribute("bean", news);
