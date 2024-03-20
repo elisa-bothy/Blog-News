@@ -9,6 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 :root{
     --menu-background-color:#9469C9;
+    --menu-hoover-background-color:#604087;
     --menu-text-color:#DDDDDD;
     --main-background-color:#EAEFF2;
     --main-text-color:#673F40;
@@ -26,6 +27,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 h1, h2, h3, p, a, div, td, th, legend, ul, label, input, textarea, span{
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
 }
 
 body{
@@ -40,6 +42,7 @@ header{
     left: 0;
     width: 100%;
     display: flex;
+    background-color: var(--menu-background-color);
     justify-content: center;
     position: fixed;
     z-index: 1;
@@ -49,9 +52,11 @@ header{
     letter-spacing: 1px;
 }
 
-header ul, header div{
+header ul, header .logo{
     position: relative;
     display: flex;
+}
+header ul{
     justify-content: center;
 }
 
@@ -59,7 +64,7 @@ header a{
     color:var(--menu-text-color)
 }
 
-header ul a {
+header a {
     position: relative;
     list-style: none;
     margin-top: 0;
@@ -78,31 +83,43 @@ header a :visited{
 header a :active{
     color: var(--menu-text-color);
 }
-header  a :hover{
-    color: var(--menu-text-color);
-}
-header ul a:hover{
-    background-color: var(--main-background-color);
+header a:hover{
+    background-color: var(--menu-hoover-background-color);
     color: var(--menu-text-color);
 }
 
-ul, div{
+header img{
+    display: flex;
+    justify-content: flex-start;
+}
+
+ul, .logo{
     width: 100%;
     margin: 0 0 0 0;
     padding: 0;
 }
 
-ul a{
+header a{
     width: 50%;
     height: 7vh;
     text-align: center;
     padding-top: 3vh;
 }
 
+.logo{
+    justify-content: flex-start;
+}
+
+img{
+    position: absolute;
+    bottom: 1vh;
+}
+
 main{
     width: 100%;
     height: 180vh;
     margin-top: 10vh;
+    text-align: center;
     background-color: var(--main-background-color);
     color: var(--main-text-color);
     justify-content: center;
@@ -111,8 +128,8 @@ main{
 
 footer{
     width: 100%;
-    height: 10vh;
-    padding: 10vh;
+    height: 7vh;
+    padding-top: 4vh;
     text-align: center;
     background-color: var(--footer-background-color);
     color: var(--footer-text-color);

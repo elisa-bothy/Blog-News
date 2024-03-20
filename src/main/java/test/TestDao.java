@@ -2,11 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package test;
 
+import dao.PersonDao;
 import entities.Person;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 
 /**
  *

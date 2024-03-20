@@ -11,6 +11,7 @@ import java.util.Objects;
  *
  * @author Guillaume Rostagnat
  */
+@SuppressWarnings("serial")
 public class Person implements Identifiable, Serializable{
     
     Integer id;
