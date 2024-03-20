@@ -5,7 +5,6 @@
 package dao;
 
 import entities.News;
-import entities.Person;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

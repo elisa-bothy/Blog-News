@@ -1,5 +1,5 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="pageForm">
     <form action="<c:url value="signUp"/>" method="POST" class="formLoginForm">
     <div>

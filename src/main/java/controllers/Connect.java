@@ -5,7 +5,7 @@
 package controllers;
 
 import entities.Person;
-import forms.SignUpFormChecker;
+import forms.ConnectFormChecker;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,34 +16,35 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Igor Martellote
+ * @author Valentina Sarais
  */
-@WebServlet("/visitor/signUp")
+@WebServlet ("/visitor/connect")
 @SuppressWarnings("serial")
-public class SignUp extends HttpServlet {
-
+public class Connect extends HttpServlet {
+    
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/visitor/signUp.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/visitor/connect.jsp").forward(req, resp);
     }
-
+    
+     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
-        // recuperer les donnes du FORM
-        SignUpFormChecker sufc = new SignUpFormChecker(req);
-        Person p = sufc.checkForm();
-        //on verifie les donnes: user and password
-        if (sufc.getErrors().isEmpty()) {
+        // récupérer les données du formulaire et les vérifier
+        ConnectFormChecker fc = new ConnectFormChecker(req);
+        Person p = fc.checkForm();
+        // Si erreur => affichage formulaire sinon affichage page OK
+        if (fc.getErrors().isEmpty()) {
             HttpSession session = req.getSession();
             session.setAttribute("user", p);
-
-            req.getRequestDispatcher("/visitor/index.jsp").forward(req, resp);
+            resp.sendRedirect(req.getContextPath()+"/visitor/index");
         } else {
-            HttpSession session = req.getSession();
-            session.setAttribute("user", p);
-            req.getRequestDispatcher("/WEB-INF/visitor/signUp.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/visitor/connect.jsp")
+                    .forward(req, resp);
         }
     }
-
+    
 }
+  
+   
