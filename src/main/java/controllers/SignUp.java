@@ -32,16 +32,16 @@ public class SignUp extends HttpServlet {
             throws ServletException, IOException {
         // recuperer les donnes du FORM
         SignUpFormChecker sufc = new SignUpFormChecker(req);
-        Person p = sufc.checkForm();
+        Person pers = sufc.checkForm();
         //on verifie les donnes: user and password
         if (sufc.getErrors().isEmpty()) {
             HttpSession session = req.getSession();
-            session.setAttribute("user", p);
+            session.setAttribute("user", pers);
 
             req.getRequestDispatcher("/visitor/index.jsp").forward(req, resp);
         } else {
             HttpSession session = req.getSession();
-            session.setAttribute("user", p);
+            session.setAttribute("user", pers);
             req.getRequestDispatcher("/WEB-INF/visitor/signUp.jsp").forward(req, resp);
         }
     }

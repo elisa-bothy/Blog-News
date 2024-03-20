@@ -35,6 +35,7 @@ public class News extends HttpServlet {
             } else {
                 // Passer l'article à la page JSP
                 request.setAttribute("news", news);
+                request.setAttribute("comments", DAOFactory.getCommentDao().list());
                 request.getRequestDispatcher("/WEB-INF/visitor/news.jsp").
                         forward(request, response);
             }
