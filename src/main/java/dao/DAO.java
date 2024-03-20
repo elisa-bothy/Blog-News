@@ -99,7 +99,7 @@ public abstract class DAO<T extends Identifiable> {
                 list.add(obj);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors du listage : " + ex.getMessage());
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors du listage : {0}", ex.getMessage());
         }
         return list;
     }

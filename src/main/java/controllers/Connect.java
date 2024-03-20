@@ -33,11 +33,11 @@ public class Connect extends HttpServlet {
             throws ServletException, IOException {
         // récupérer les données du formulaire et les vérifier
         ConnectFormChecker fc = new ConnectFormChecker(req);
-        Person p = fc.checkForm();
+        Person pers = fc.checkForm();
         // Si erreur => affichage formulaire sinon affichage page OK
         if (fc.getErrors().isEmpty()) {
             HttpSession session = req.getSession();
-            session.setAttribute("user", p);
+            session.setAttribute("user", pers);
             resp.sendRedirect(req.getContextPath()+"/visitor/index");
         } else {
             req.getRequestDispatcher("/WEB-INF/visitor/connect.jsp")
