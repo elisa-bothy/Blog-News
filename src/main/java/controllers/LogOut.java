@@ -16,19 +16,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Igor Martellote
  */
-@WebServlet("/logout")
-public class Logout extends HttpServlet {
+@WebServlet("/user/logOut")
+public class LogOut extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();
-        resp.sendRedirect("/projetJEE/");
+        resp.sendRedirect(req.getContextPath()+"/visitor/index");
     }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect("/Blog1990/");
-    }
-
 }
