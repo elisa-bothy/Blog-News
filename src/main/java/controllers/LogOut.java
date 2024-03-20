@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Igor Martellote
  */
-
 @WebServlet("/user/logOut")
 @SuppressWarnings("serial")
 public class LogOut extends HttpServlet {
