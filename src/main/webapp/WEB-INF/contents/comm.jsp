@@ -15,6 +15,7 @@
                 <th>Auteur du commentaire</th>
                 <th>Date de création du commentaire</th>
                 <th>Contenu du commentaire</th>
+                <th>Valider le commentaire</th>
                 <th>Supprimer le commentaire</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                 <td><c:out value="${comm.author.login}"/></td>
                 <td>${comm.created}</td>
                 <td><c:out value="${comm.content}"/></td>
+                <td><a href="<c:url value="/admin/validateComm"/>?commId=${comm.id}"><span  class="button">Valider</span></a></td>
                 <td><a href="<c:url value="/admin/deleteComm"/>?commId=${comm.id}"><span  class="button">Supprimer</span></a></td>  
             </tr>
         </c:forEach>

@@ -4,7 +4,7 @@
  */
 package controllers;
 
-import dao.DAOFactory;
+import entities.Comment;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,15 +16,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Guillaume Rostagnat
  */
-@WebServlet("/admin/comm")
+@WebServlet("/admin/validatecomm")
 @SuppressWarnings("serial")
-public class AdminComm extends HttpServlet {
+public class ValidateComm extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req
-                .setAttribute("comms", DAOFactory.getCommentDao().list());
-        req
-                .getRequestDispatcher("/WEB-INF/admin/adminComm.jsp").forward(req, resp);
+        int id = Integer.parseInt(req.getParameter("commId"));
+        entities.Comment comment = new Comment();
+        if (comment != null) {
+            
+        }
+
     }
 }
