@@ -15,9 +15,9 @@
                 <a href="<c:url value="/visitor/signUp" />"><li>Inscription</li></a>
             </c:when>
             <c:when test="${sessionScope.user.id == 1}">
-                <a href="<c:url value="/admin/usersList" />"><li>Gestion Utilisateurs</li></a>
-                <a href="<c:url value="/admin/commentsList" />"><li>Gestion Commentaire</li></a>
-                <a href="<c:url value="/admin/newsList" />"><li>Gestion News</li></a>
+                <a href="<c:url value="/admin/user" />"><li>Gestion Utilisateurs</li></a>
+                <a href="<c:url value="/admin/comm" />"><li>Gestion Commentaire</li></a>
+                <a href="<c:url value="/admin/news" />"><li>Gestion News</li></a>
                 <a href="<c:url value="/user/profile" />"><li>Profil</li></a>
                 <a href="<c:url value="/user/logOut" />"><li>Déconnexion</li></a>
             </c:when>

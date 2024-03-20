@@ -12,7 +12,7 @@
                 <div>&Eacute;crit par ${bNews.author.login} le ${bNews.created}</div>
                 <div class="news-content">${bNews.content}</div>
                 <div>
-                    <a href=" <c:url value="article?id=${bNews.id} "/>" >
+                    <a href=" <c:url value="/visitor/news?id=${bNews.id} "/>" >
                         <img src="<c:url value="/assets/photos/plus-jaune.png"/>" alt="En savoir plus"/>
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                 <div>&Eacute;crit par ${news.author.login} le ${news.created}</div>
                 <div class="news-content">${news.content}</div>
                 <div>
-                    <a href=" <c:url value="article?id=${news.id} "/>" >
+                    <a href=" <c:url value="/visitor/news?id=${news.id} "/>" >
                         <img src="<c:url value="/assets/photos/plus-jaune.png"/>" alt="En savoir plus"/>
                     </a>
                 </div>
