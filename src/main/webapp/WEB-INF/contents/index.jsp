@@ -10,7 +10,7 @@
             <c:forEach var="bNews" items="${requestScope.bestNews}">
                 <article class="bNews">
                     <img src="<c:url value="/assets/photos/icons8-fake-news-64(1).png"/>" alt="L'image de l'article"/>
-                    <h3>${bNews.subject}</h3>
+                    <h3>${bNews.title}</h3>
                     <div>&Eacute;crit par ${bNews.author.login} le ${bNews.created}</div>
                     <div class="news-content">${bNews.content}</div>
                     <div>
@@ -29,7 +29,7 @@
             <c:forEach var="news" items="${requestScope.allNews}">
                 <article class="news">
                     <img src="<c:url value="/assets/photos/icons8-fake-news-64.png"/>" alt="L'image de l'article"/>
-                    <h3>${news.subject}</h3>
+                    <h3>${news.title}</h3>
                     <div>&Eacute;crit par ${news.author.login} le ${news.created}</div>
                     <div class="news-content">${news.content}</div>
                     <div>
