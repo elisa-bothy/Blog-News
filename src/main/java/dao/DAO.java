@@ -70,7 +70,7 @@ public abstract class DAO<T extends Identifiable> {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors du delete : " + ex.getMessage());
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors du delete : {0}", ex.getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ public abstract class DAO<T extends Identifiable> {
                 count = rs.getInt("c");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors du comptage : " + ex.getMessage());
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors du comptage : {0}", ex.getMessage());
         }
         return count;
     }

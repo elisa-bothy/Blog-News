@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class CommentDao extends DAO<Comment> {
 
     public CommentDao() {
-        super("person");
+        super("comment");
     }
 
     @Override
