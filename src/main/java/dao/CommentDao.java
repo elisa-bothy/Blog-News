@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -104,5 +105,21 @@ public class CommentDao extends DAO<Comment> {
         }
         return obj;
     }
+
+    public Collection<Comment> listByNewsId(int newsId) {
+    ArrayList<Comment> list = new ArrayList<>();
+    String sql = "SELECT * FROM " + table + " WHERE id_news = ? ORDER BY created DESC";
+    try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+        pstmt.setInt(1, newsId);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            Comment obj = createObject(rs);
+            list.add(obj);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, "Erreur lors du listage des commentaires pour la news avec l'ID " + newsId + " : " + ex.getMessage());
+    }
+    return list;
+}
 
 }

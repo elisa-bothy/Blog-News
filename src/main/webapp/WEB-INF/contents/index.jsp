@@ -4,7 +4,7 @@
 <div class="container" id="container">
     <div id="articles">
         <c:if test="${! empty sessionScope.user}">
-            <a href="<c:url value="/user/createNews"/>"><span  class="button">Créer un Nouvelle News</span></a>
+            <a href="<c:url value="/user/createNews"/>"><span  class="button">Créer une nouvelle News</span></a>
         </c:if>
         <div class="bestNews">
             <c:forEach var="bNews" items="${requestScope.bestNews}">
@@ -14,7 +14,7 @@
                     <div>&Eacute;crit par ${bNews.author.login} le ${bNews.created}</div>
                     <div class="news-content">${bNews.content}</div>
                     <div>
-                        <a href=" <c:url value="article?id=${bNews.id} "/>" >
+                        <a href=" <c:url value="news?id=${bNews.id} "/>" >
                             <img src="<c:url value="/assets/photos/plus-jaune.png"/>" alt="En savoir plus"/>
                         </a>
                     </div>

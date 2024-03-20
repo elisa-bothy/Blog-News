@@ -8,6 +8,7 @@ import dao.DAOFactory;
 import entities.Comment;
 import forms.CreateCommentFormChecker;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,30 +22,27 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet ("/visitor/news")
 @SuppressWarnings("serial")
 public class News extends HttpServlet {
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            // Récupérer l'ID de l'article depuis l'URL
-            int id = Integer.valueOf(request.getParameter("id"));
-            entities.News news = DAOFactory.getNewsDao().read(id);
-            Comment comment = DAOFactory.getCommentDao().read(id);
-            if (news == null) {
-                // Gérer l'erreur si l'article avec l'ID spécifié n'existe pas
-                throw new IllegalArgumentException();
-            } else {
-                // Passer l'article à la page JSP
-                request.setAttribute("news", news);
-                request.setAttribute("comments", DAOFactory.getCommentDao().list());
-                request.getRequestDispatcher("/WEB-INF/visitor/news.jsp").
-                        forward(request, response);
-            }
-        } catch (IllegalArgumentException ex) {
-            // Gérer l'erreur si l'ID n'est pas un nombre valide
-            response.sendError(404);
-        }
-    }
     
+    @Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    try {
+        int id = Integer.valueOf(request.getParameter("id"));
+        entities.News news = DAOFactory.getNewsDao().read(id);
+        if (news == null) {
+            throw new IllegalArgumentException();
+        } else {
+            // Récupérer les commentaires spécifiques à cette news
+            List<Comment> comments = (List<Comment>) DAOFactory.getCommentDao().listByNewsId(id);
+            request.setAttribute("news", news);
+            request.setAttribute("comments", comments);
+            request.getRequestDispatcher("/WEB-INF/visitor/news.jsp").forward(request, response);
+        }
+    } catch (IllegalArgumentException ex) {
+        response.sendError(404);
+    }
+}
+
    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
