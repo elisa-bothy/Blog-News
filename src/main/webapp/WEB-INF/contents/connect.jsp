@@ -16,7 +16,7 @@
         <legend>Connexion</legend>
         <div>
             <label for="login">Login</label>
-            <input id="login" name="login" value="${requestScope.bean.login}">
+            <input id="login" name="login" value="${requestScope.bean.login}" autofocus="true">
             <div class="error">${requestScope.errors.login}</div>
         </div>
         <div>

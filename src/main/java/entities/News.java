@@ -4,6 +4,7 @@
  */
 package entities;
 
+import java.awt.Image;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -18,6 +19,7 @@ public class News implements Identifiable {
     private String content;
     private Timestamp created;
     private Person author;
+    private String filename;
 
     @Override
     public int hashCode() {
@@ -27,6 +29,7 @@ public class News implements Identifiable {
         hash = 17 * hash + Objects.hashCode(this.content);
         hash = 17 * hash + Objects.hashCode(this.created);
         hash = 17 * hash + Objects.hashCode(this.author);
+        hash = 17 * hash + Objects.hashCode(this.filename);
         return hash;
     }
 
@@ -54,8 +57,12 @@ public class News implements Identifiable {
         if (!Objects.equals(this.created, other.created)) {
             return false;
         }
-        return Objects.equals(this.author, other.author);
+        if (!Objects.equals(this.author, other.author)) {
+            return false;
+        }
+        return Objects.equals(this.filename, other.filename);
     }
+
 
     @Override
     public String toString() {
@@ -66,6 +73,7 @@ public class News implements Identifiable {
         sb.append(", content=").append(content);
         sb.append(", created=").append(created);
         sb.append(", author=").append(author);
+        sb.append(", photo=").append(filename);
         sb.append('}');
         return sb.toString();
     }
@@ -109,6 +117,13 @@ public class News implements Identifiable {
     public void setAuthor(Person author) {
         this.author = author;
     }
-    
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
 }

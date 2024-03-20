@@ -30,6 +30,7 @@ public class NewsDao extends DAO<News> {
         obj.setTitle(rs.getString("title"));
         obj.setContent(rs.getString("content"));
         obj.setAuthor(DAOFactory.getPersonDao().read(rs.getInt("author")));
+        obj.setFilename(rs.getString("filename"));
         return obj;
 
     }
@@ -37,12 +38,13 @@ public class NewsDao extends DAO<News> {
     @Override
     public void create(News obj) {
         String sql = "INSERT INTO " + table
-                + " (title, content, created, author) VALUES (?, ?, ?, ?)";
+                + " (title, content, created, author, filename) VALUES (?, ?, ?, ?, ?)";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, obj.getTitle());
             pstmt.setString(2, obj.getContent());
             pstmt.setTimestamp(3, obj.getCreated());
             pstmt.setInt(4, obj.getAuthor().getId());
+            pstmt.setString(5, obj.getFilename());
             int nbLines = pstmt.executeUpdate();
             if (nbLines == 1) {
                 ResultSet generatedKeys = pstmt.getGeneratedKeys();
@@ -58,13 +60,15 @@ public class NewsDao extends DAO<News> {
     @Override
     protected void update(News obj) {
         String sql = "UPDATE " + table
-                + " SET title=?, content=?, created=?, author=? WHERE id?";
+                + " SET title=?, content=?, created=?, author=?, filename=? WHERE id?";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, obj.getTitle());
             pstmt.setString(2, obj.getContent());
             pstmt.setTimestamp(3, obj.getCreated());
             pstmt.setInt(4, obj.getAuthor().getId());
-            pstmt.setInt(5, obj.getId());
+            pstmt.setString(5, obj.getFilename());
+            pstmt.setInt(6, obj.getId());
+
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(NewsDao.class.getName()).log(Level.SEVERE, null, ex);
