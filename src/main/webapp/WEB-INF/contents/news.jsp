@@ -34,8 +34,8 @@
                     </textarea>
                 </div>
             </fieldset>
-                        <div class="message">${requestScope.messages.newComment}</div>
-                        <div class="buttons">
+            <div class="message">${requestScope.messages.newComment}</div>
+            <div class="buttons">
                 <input type="submit" value="Envoyer">
                 <input type="reset" value="Annuler">
             </div>
