@@ -32,8 +32,9 @@ public class testDao extends HttpServlet {
         Comment c = new Comment();
 
         c.setContent("blabla");
-        c.setCreated(Timestamp.valueOf(LocalDateTime.MIN));
+        c.setCreated(Timestamp.valueOf(LocalDateTime.now()));
         c.setAuthor(DAOFactory.getPersonDao().read(1));
+        c.setId_news(2);
         System.out.println(c);
         cdao.save(c);
 

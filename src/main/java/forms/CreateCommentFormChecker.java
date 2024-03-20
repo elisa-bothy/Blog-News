@@ -30,7 +30,8 @@ public class CreateCommentFormChecker extends FormChecker<Comment> {
         obj.setAuthor(author);
         obj.setContent(content);
         obj.setCreated(Timestamp.valueOf(LocalDateTime.now()));
-        // Vérifier les données du formulaire
+        obj.setId_news(Integer.valueOf(request.getParameter("id")));
+            // Vérifier les données du formulaire
         // Vérifier si les champs sont remplis
         if (content.length() == 0) {
             setErrors("content", "Ce champ doit être rempli.");
