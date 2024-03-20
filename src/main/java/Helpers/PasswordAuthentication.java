@@ -88,13 +88,13 @@ public final class PasswordAuthentication {
     }
 
     /**
-     * Authenticate with a password and a stored password token.
+     * Authentificate with a password and a stored password token.
      *
      * @param password The password to compare
      * @param token The token to compare the password to
      * @return true if the password and token match
      */
-    public boolean authenticate(char[] password, String token) {
+    public boolean authentificate(char[] password, String token) {
         Matcher m = LAYOUT.matcher(token);
         if (!m.matches()) {
             throw new IllegalArgumentException("Invalid token format");

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Guillaume Rostagnat
  */
-@WebServlet("/admin/validatecomm")
+@WebServlet("/admin/validateComm")
 @SuppressWarnings("serial")
 public class ValidateComm extends HttpServlet {
 
@@ -25,8 +25,7 @@ public class ValidateComm extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("commId"));
         entities.Comment comment = new Comment();
         if (comment != null) {
-            
+            comment.setState(2);
         }
-
     }
 }

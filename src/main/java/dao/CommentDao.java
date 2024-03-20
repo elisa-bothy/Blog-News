@@ -100,7 +100,7 @@ public class CommentDao extends DAO<Comment> {
                 obj = createObject(rs);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors de la lecture : " + ex.getMessage());
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors de la lecture : {0}", ex.getMessage());
         }
         return obj;
     }

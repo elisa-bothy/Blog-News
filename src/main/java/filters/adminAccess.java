@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  * @author Elisa Bothy
  */
 @WebFilter("/admin/*")
-public class adminAccess implements Filter{
+public class adminAccess implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -33,12 +33,11 @@ public class adminAccess implements Filter{
         //travail en amont
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession(false);
-        Person obj = (Person)session.getAttribute("user");
-        if(session == null 
-                || obj == null || obj.getId() != 1
-                ){
-            ((HttpServletResponse)response).sendError(403);
-        }else{
+        Person obj = (Person) session.getAttribute("user");
+        if (session == null
+                || obj == null || obj.getId() != 1) {
+            ((HttpServletResponse) response).sendError(403);
+        } else {
             //appel filtre suivant
             chain.doFilter(request, response);
             //travail en aval : rien
@@ -48,5 +47,5 @@ public class adminAccess implements Filter{
     @Override
     public void destroy() {
     }
-    
+
 }

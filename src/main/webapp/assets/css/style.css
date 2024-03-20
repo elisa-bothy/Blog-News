@@ -146,8 +146,6 @@ main{
 }
 
 .text-plus{
-    display: flex;
-    justify-content: center;
 }
 
 .img-news, .text-news{
@@ -157,7 +155,7 @@ main{
 .score-news{
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: center;    
     font-size: xx-large;
     font-weight: 500;
 }

@@ -4,12 +4,9 @@
  */
 package entities;
 
-
 import dao.DAOFactory;
-import java.awt.Image;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -67,7 +64,6 @@ public class News implements Identifiable {
         return Objects.equals(this.filename, other.filename);
     }
 
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -123,12 +119,13 @@ public class News implements Identifiable {
     public void setAuthor(Person author) {
         this.author = author;
     }
-    
+
     public int getScore() {
-        ArrayList <Vote> votes = (ArrayList <Vote>) DAOFactory.getVoteDao().list();
-        for(Vote vote : votes){
-            if(getId() == vote.getId_news())
+        ArrayList<Vote> votes = (ArrayList<Vote>) DAOFactory.getVoteDao().list();
+        for (Vote vote : votes) {
+            if (getId() == vote.getId_news()) {
                 return vote.getScore();
+            }
         }
         return 0;
     }
@@ -140,7 +137,5 @@ public class News implements Identifiable {
     public void setFilename(String filename) {
         this.filename = filename;
     }
-    
-}
 
-    
+}

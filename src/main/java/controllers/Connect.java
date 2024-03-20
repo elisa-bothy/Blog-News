@@ -18,18 +18,18 @@ import javax.servlet.http.HttpSession;
  *
  * @author Valentina Sarais
  */
-@WebServlet ("/visitor/connect")
+@WebServlet("/visitor/connect")
 @SuppressWarnings("serial")
 public class Connect extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/visitor/connect.jsp").forward(req, resp);
     }
-    
-     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         // récupérer les données du formulaire et les vérifier
         ConnectFormChecker fc = new ConnectFormChecker(req);
@@ -38,13 +38,10 @@ public class Connect extends HttpServlet {
         if (fc.getErrors().isEmpty()) {
             HttpSession session = req.getSession();
             session.setAttribute("user", pers);
-            resp.sendRedirect(req.getContextPath()+"/visitor/index");
+            resp.sendRedirect(req.getContextPath() + "/visitor/index");
         } else {
             req.getRequestDispatcher("/WEB-INF/visitor/connect.jsp")
                     .forward(req, resp);
         }
     }
-    
 }
-  
-   

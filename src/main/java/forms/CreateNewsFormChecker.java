@@ -2,14 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package forms;
 
 import javax.servlet.http.HttpServletRequest;
 import dao.NewsDao;
 import entities.News;
 import entities.Person;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -49,6 +47,5 @@ public class CreateNewsFormChecker extends FormChecker<News> {
         request.setAttribute("bean", news);
         return news;
     }
-
 
 }

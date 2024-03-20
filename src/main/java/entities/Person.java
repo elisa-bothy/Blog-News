@@ -84,7 +84,5 @@ public class Person implements Identifiable, Serializable{
         sb.append('}');
         return sb.toString();
     }
-    
-    
-    
+     
 }

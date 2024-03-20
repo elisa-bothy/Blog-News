@@ -8,7 +8,6 @@ import forms.CreateNewsFormChecker;
 import entities.News;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -57,7 +56,7 @@ public class CreateNews extends HttpServlet {
         CreateNewsFormChecker cnfc = new CreateNewsFormChecker(req);
         News news = cnfc.checkForm();
         if (cnfc.getErrors().isEmpty()) {
-            resp.sendRedirect(req.getContextPath() + "/");
+            resp.sendRedirect(req.getContextPath() + "/visitor/index");
         } else {
             req.getRequestDispatcher("/WEB-INF/user/createNews.jsp").forward(req, resp);
         }
@@ -72,5 +71,4 @@ public class CreateNews extends HttpServlet {
         }
         return "Default.file";
     }
-
 }

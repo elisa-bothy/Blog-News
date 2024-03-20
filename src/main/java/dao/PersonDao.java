@@ -24,7 +24,7 @@ public class PersonDao extends DAO<Person> {
         obj.setLogin(rs.getString("login"));
         obj.setPassword(rs.getString("password"));
         return obj;
-    
+
     }
 
     @Override
@@ -47,7 +47,7 @@ public class PersonDao extends DAO<Person> {
 
     @Override
     protected void update(Person obj) {
-        String sql = "UPDATE " + table 
+        String sql = "UPDATE " + table
                 + " SET login=?, password=? WHERE id=?";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, obj.getLogin());
@@ -58,18 +58,18 @@ public class PersonDao extends DAO<Person> {
             Logger.getLogger(PersonDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public Person read(String login) {
         Person obj = null;
         String sql = "SELECT * FROM " + table + " WHERE login=?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+        try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, login);
             ResultSet rs = pstmt.executeQuery();
             if (rs.first()) {
                 obj = createObject(rs);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors de la lecture : " + ex.getMessage());
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors de la lecture : {0}", ex.getMessage());
         }
         return obj;
     }

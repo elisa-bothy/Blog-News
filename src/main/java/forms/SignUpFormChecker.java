@@ -51,9 +51,7 @@ public class SignUpFormChecker extends FormChecker<Person> {
             } else {
                 DAOFactory.getPersonDao().save(obj);
             }
-
         }
-
         //ass;ocie les msg de errors et le bean a la requete
         request.setAttribute("errors", errors);
         request.setAttribute("bean", obj);

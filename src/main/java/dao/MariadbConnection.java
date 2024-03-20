@@ -15,11 +15,12 @@ import java.util.logging.Logger;
  * @author Guillaume Rostagnat
  */
 public class MariadbConnection {
-    
+
     private static Connection connection;
 
     private MariadbConnection() {
     }
+
     /**
      * Retourne un singleton de connexion.
      *
@@ -61,6 +62,3 @@ public class MariadbConnection {
         }
     }
 }
-
-    
-
