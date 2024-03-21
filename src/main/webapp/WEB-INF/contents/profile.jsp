@@ -7,8 +7,8 @@
     <p>Login : ${sessionScope.user.login}</p>
     <section>
         <h3>Changer de mot de passe</h3>
-        <form action="<c:url value="user/profile"/>" method="post">
-        <fieldset>
+        <form action="<c:url value="/user/profile"/>" method="post">
+            <fieldset>
             <legend>Modifications</legend>
             <div>
                 <label for="pwd">Mot de passe actuel</label>
@@ -17,7 +17,7 @@
             </div>
             <div>
                 <label for="next">Nouveau mot de passe</label>
-                <input type="password" id="next" name="next">
+                <input type="password" id="newPassword" name="next">
                 <div class="error">${requestScope.errors.next}</div>
             </div>
             <div>

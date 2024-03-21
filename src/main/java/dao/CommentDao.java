@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class CommentDao extends DAO<Comment> {
 
     public CommentDao() {
-        super("person");
+        super("comment");
     }
 
     @Override
@@ -30,6 +30,7 @@ public class CommentDao extends DAO<Comment> {
         obj.setContent(rs.getString("content"));
         obj.setCreated(rs.getTimestamp("created"));
         obj.setAuthor(DAOFactory.getPersonDao().read(rs.getInt("author")));
+        obj.setId_news(rs.getInt("id_news"));
         return obj;
 
     }
@@ -38,11 +39,13 @@ public class CommentDao extends DAO<Comment> {
     protected void create(Comment obj) {
 
         String sql = "INSERT INTO " + table
-                + " (content, created, author) VALUES (?, ?, ?)";
+                + " (content, created, author, id_news) VALUES (?, ?, ?, ?)";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, obj.getContent());
             pstmt.setTimestamp(2, obj.getCreated());
             pstmt.setInt(3, obj.getAuthor().getId());
+            pstmt.setInt(4, obj.getId_news());
+
             int nbLines = pstmt.executeUpdate();
             if (nbLines == 1) {
                 ResultSet generatedKeys = pstmt.getGeneratedKeys();
@@ -58,12 +61,13 @@ public class CommentDao extends DAO<Comment> {
     @Override
     protected void update(Comment obj) {
         String sql = "UPDATE " + table
-                + " SET content=?, created=?, author=? WHERE id=?";
+                + " SET content=?, created=?, author=?, id_news=?, WHERE id=?";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, obj.getContent());
             pstmt.setTimestamp(2, obj.getCreated());
             pstmt.setInt(3, obj.getAuthor().getId());
-            pstmt.setInt(4, obj.getId());
+            pstmt.setInt(4, obj.getId_news());
+            pstmt.setInt(5, obj.getId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,6 +88,21 @@ public class CommentDao extends DAO<Comment> {
             Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, "Erreur lors du listage : {0}", ex.getMessage());
         }
         return list;
+    }
+
+    public Comment readContent(String content) {
+        Comment obj = null;
+        String sql = "SELECT * FROM " + table + " WHERE content= ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, content);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.first()) {
+                obj = createObject(rs);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors de la lecture : {0}", ex.getMessage());
+        }
+        return obj;
     }
 
 }

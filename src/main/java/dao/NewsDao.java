@@ -75,11 +75,10 @@ public class NewsDao extends DAO<News> {
         }
     }
 
-    public Collection<News> listLast(int qty) {
+    public Collection<News> listLast() {
         ArrayList<News> list = new ArrayList<>();
-        String sql = "SELECT * FROM " + table + " ORDER BY created DESC LIMIT ?";
+        String sql = "SELECT * FROM " + table + " ORDER BY created DESC LIMIT 10";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, qty);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 News obj = createObject(rs);
@@ -87,6 +86,50 @@ public class NewsDao extends DAO<News> {
             }
         } catch (SQLException ex) {
             Logger.getLogger(NewsDao.class.getName()).log(Level.SEVERE, "Erreur lors du listage : {0}", ex.getMessage());
+        }
+        return list;
+    }
+
+    public Object listBestN(int qty) {
+        ArrayList<News> list = new ArrayList<>();
+        String sql = "SELECT * FROM news NATURAL JOIN vote ORDER BY `vote`.`score` DESC LIMIT ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+            pstmt.setInt(1, qty);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                News n = new News();
+                n.setId(rs.getInt("id"));
+                n.setTitle(rs.getString("title"));
+                n.setContent(rs.getString("content"));
+                n.setCreated(rs.getTimestamp("created"));
+                n.setAuthor(new PersonDao().read(rs.getInt("author")));
+                n.setFilename(rs.getString("filename"));
+                list.add(n);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur lors du listage :" + ex.getMessage());
+        }
+        return list;
+    }
+
+    public Collection<News> listLastN(int qty){
+        ArrayList<News> list = new ArrayList<>();
+        String sql = "SELECT * FROM news ORDER BY created DESC LIMIT ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+            pstmt.setInt(1, qty);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                News n = new News();
+                n.setId(rs.getInt("id"));
+                n.setTitle(rs.getString("title"));
+                n.setContent(rs.getString("content"));
+                n.setCreated(rs.getTimestamp("created"));
+                n.setAuthor(new PersonDao().read(rs.getInt("author")));
+                n.setFilename(rs.getString("filename"));
+                list.add(n);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur lors du listage :" + ex.getMessage());
         }
         return list;
     }

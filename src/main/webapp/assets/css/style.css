@@ -14,7 +14,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     --main-background-color:#EAEFF2;
     --main-text-color:#673F40;
     --best-news-background-color:#D2AE50;
+    --best-news-border-color:#a7893f;
     --news-background-color: #4B8378;
+    --news-border-color: #31534c;
     --footer-background-color: #E4BCB9;
     --footer-text-color: #000000;
     --text-best-news-color:#673F40;
@@ -42,6 +44,7 @@ header{
     left: 0;
     width: 100%;
     display: flex;
+    background-color: var(--menu-background-color);
     justify-content: center;
     position: fixed;
     z-index: 1;
@@ -51,9 +54,11 @@ header{
     letter-spacing: 1px;
 }
 
-header ul, header div{
+header ul, header .logo{
     position: relative;
     display: flex;
+}
+header ul{
     justify-content: center;
 }
 
@@ -61,7 +66,7 @@ header a{
     color:var(--menu-text-color)
 }
 
-header ul a {
+header a {
     position: relative;
     list-style: none;
     margin-top: 0;
@@ -80,30 +85,42 @@ header a :visited{
 header a :active{
     color: var(--menu-text-color);
 }
-header  a :hover{
-    color: var(--menu-text-color);
-}
-header ul a:hover{
+header a:hover{
     background-color: var(--menu-hoover-background-color);
     color: var(--menu-text-color);
 }
 
-ul, div{
+header img{
+    display: flex;
+    justify-content: flex-start;
+}
+
+ul, .logo{
     width: 100%;
     margin: 0 0 0 0;
     padding: 0;
 }
 
-ul a{
+header a{
     width: 50%;
     height: 7vh;
     text-align: center;
     padding-top: 3vh;
 }
 
+.logo{
+    justify-content: flex-start;
+}
+
+header img{
+    position: absolute;
+    bottom: 1vh;
+    left: 7%;
+}
+
 main{
     width: 100%;
-    height: 180vh;
+    height: auto;
     margin-top: 10vh;
     text-align: center;
     background-color: var(--main-background-color);
@@ -112,15 +129,87 @@ main{
     align-items: center;
 }
 
-.imageNews{
-    width: 100px;
-    height: 100px;
+#articles{
+
+}
+
+.img-news{
+    height: 80vh;
+}
+
+.img-news img{
+
+}
+
+.text-news{
+    height: 20vh;
+}
+
+.text-plus{
+}
+
+.img-news, .text-news{
+
+}
+
+.score-news{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;    
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.score-news img{
+    width: 20%;
+}
+
+.plus-news{
+
+}
+
+.plus-news img{
+    width: 15%;
+}
+
+.bNews:hover{
+    border: 2px solid var(--best-news-border-color);
+}
+
+.news:hover{
+    border: 2px solid var(--news-border-color);
+}
+
+.bNews, .news{
+    width: 25%;
+    height: 60vh;
+    display: inline-flex;
+    border: 2px solid transparent; 
+    border-radius: 5%;
+    margin: 2vh;
+    padding: 2vh;
+}
+
+.bNews{
+    background-color: var(--best-news-background-color);
+    color : var(--text-best-news-color);
+}
+
+.news{
+    background-color: var(--news-background-color);
+    color: var(--text-news-color);
+}
+
+.news-content {
+    max-height: 6vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 footer{
     width: 100%;
-    height: 3vh;
-    padding: 10vh;
+    height: 7vh;
+    padding-top: 4vh;
     text-align: center;
     background-color: var(--footer-background-color);
     color: var(--footer-text-color);

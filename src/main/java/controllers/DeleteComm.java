@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import dao.CommentDao;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,15 +14,25 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Igor Martellote
+ * @author Guillaume Rostagnat
  */
-@WebServlet("/user/logOut")
-@SuppressWarnings("serial")
-public class LogOut extends HttpServlet {
+@WebServlet("/admin/deleteComm")
+public class DeleteComm extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect(req.getContextPath() + "/visitor/index");
+        try {
+            int id = Integer.parseInt(req.getParameter("commId"));
+            entities.Comment comment = new CommentDao().read(id);
+            if (comment == null) {
+                throw new IllegalArgumentException();
+            } else {
+                new CommentDao().delete(id);
+                resp.sendRedirect(req.getContextPath() + "/admin/comm");
+            }
+        } catch (IllegalArgumentException ex) {
+            resp.sendError(404);
+        }
     }
+
 }

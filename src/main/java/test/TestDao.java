@@ -2,11 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package test;
 
+import dao.PersonDao;
 import entities.Person;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 
 /**
  *
@@ -20,8 +19,8 @@ public class TestDao {
         PersonDao pdao = new PersonDao();
         Person p = new Person();
 
-        p.setLogin("test");
-        p.setPassword("test");
+        p.setLogin("archie");
+        p.setPassword("null");
         System.out.println(p);
         pdao.save(p);
 

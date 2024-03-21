@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%-- 
     Document   : connect
     Created on : 20 mars 2024, 09:42:30
@@ -7,7 +7,6 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
->>>>>>> origin/communVale
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <h1>Veuillez entrer vos paramètres de connexion</h1>
 <div class="error">${requestScope.errorMsg}</div>

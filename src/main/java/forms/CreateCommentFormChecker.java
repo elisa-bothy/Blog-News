@@ -17,30 +17,37 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class CreateCommentFormChecker extends FormChecker<Comment> {
 
-    public CreateCommentFormChecker (HttpServletRequest request) {
+    public CreateCommentFormChecker(HttpServletRequest request) {
         super(request);
     }
 
     @Override
     public Comment checkForm() {
         Comment obj = new Comment();
-        Person author = (Person)request.getSession().getAttribute("user");
+        Person author = (Person) request.getSession().getAttribute("user");
         // hydrater le bean avec les données du formulaire
         String content = getParameter("content");
         obj.setAuthor(author);
         obj.setContent(content);
         obj.setCreated(Timestamp.valueOf(LocalDateTime.now()));
+        obj.setId_news(Integer.valueOf(request.getParameter("id")));
         // Vérifier les données du formulaire
         // Vérifier si les champs sont remplis
         if (content.length() == 0) {
             setErrors("content", "Ce champ doit être rempli.");
         } else {
-            DAOFactory.getCommentDao().save(obj);
-           
-        }     
-                 
+            Comment read = DAOFactory.getCommentDao().readContent(content);
+            if (read != null) {
+                setErrors("content", "Veuillez écrire un nouveau commentaire !");
+            } else {
+                DAOFactory.getCommentDao().save(obj);
+                setMessages("newComment", "Votre message a bien été crée");
+            }
+
+        }
         // associer les messages d'erreur et le bean à la requête 
         request.setAttribute("errors", errors);
+        request.setAttribute("messages", messages);
         request.setAttribute("bean", obj);
         return obj;
     }

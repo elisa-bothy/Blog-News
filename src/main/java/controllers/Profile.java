@@ -18,22 +18,20 @@ import javax.servlet.http.HttpSession;
  *
  * @author Valentina Sarais
  */
-@WebServlet ("/user/profile")
+@WebServlet("/user/profile")
 @SuppressWarnings("serial")
 
 public class Profile extends HttpServlet {
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         HttpSession session = req.getSession();
-            req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
     }
-       
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         if (req.getSession().getAttribute("user") == null) {
             resp.sendRedirect(req.getContextPath() + "/");
@@ -41,12 +39,9 @@ public class Profile extends HttpServlet {
         }
         ChangePasswordFormChecker fc = new ChangePasswordFormChecker(req);
         Person obj = fc.checkForm();
-      /*  if (fc.getErrors().isEmpty()) {
+        if (fc.getErrors().isEmpty()) {
             req.setAttribute("changed", "Votre mot de passe a été changé");
-        } else {
-        req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
-    } */
-        
-    }}
-    
-
+            req.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(req, resp);
+        }
+    }
+}

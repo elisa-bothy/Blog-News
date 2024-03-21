@@ -16,10 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 public abstract class FormChecker<T> {
 
     protected Map<String, String> errors;
+    protected Map<String, String> messages;
     protected HttpServletRequest request;
 
     public FormChecker(HttpServletRequest request) {
         this.errors = new HashMap<>();
+        this.messages = new HashMap<>();
         this.request = request;
     }
 
@@ -28,9 +30,17 @@ public abstract class FormChecker<T> {
     public Map<String, String> getErrors() {
         return errors;
     }
+    
+    public Map<String, String> getMessages() {
+        return messages;
+    }
 
     protected void setErrors(String Key, String value) {
         this.errors.put(Key, value);
+    }
+    
+    protected void setMessages(String Key, String value) {
+        this.messages.put(Key, value);
     }
 
     protected String getParameter(String key) {

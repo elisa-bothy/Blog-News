@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Valentina Sarais
  */
-@WebServlet ("/visitor/news")
+@WebServlet("/visitor/news")
 @SuppressWarnings("serial")
 public class News extends HttpServlet {
 
@@ -35,6 +35,7 @@ public class News extends HttpServlet {
             } else {
                 // Passer l'article à la page JSP
                 request.setAttribute("news", news);
+                request.setAttribute("comments", DAOFactory.getCommentDao().list());
                 request.getRequestDispatcher("/WEB-INF/visitor/news.jsp").
                         forward(request, response);
             }
@@ -43,8 +44,8 @@ public class News extends HttpServlet {
             response.sendError(404);
         }
     }
-    
-   @Override
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         // récupérer les données du formulaire et les vérifier
@@ -54,7 +55,7 @@ public class News extends HttpServlet {
         if (fc.getErrors().isEmpty()) {
             req.setAttribute("comment", comment);
             req.getRequestDispatcher("/WEB-INF/visitor/news.jsp")
-       .forward(req, resp);
-        } 
+                    .forward(req, resp);
+        }
     }
 }
