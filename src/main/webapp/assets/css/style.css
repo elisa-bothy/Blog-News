@@ -24,12 +24,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     --button-background-color: #D9D9D9;
     --detailled-text-news-color: #000000;
     --detailled-text-news-background:#D9D9D9;
+    --color-span:#B95E5E;
 }
 
 h1, h2, h3, p, a, div, td, th, legend, ul, label, input, textarea, span{
     padding: 0;
     margin: 0;
     font-family: sans-serif;
+    font-size: 100%;
 }
 
 body{
@@ -120,8 +122,10 @@ header img{
 
 main{
     width: 100%;
-    height: auto;
+    min-height: 100vh;
+    height: fit-content;
     margin-top: 10vh;
+    display: flex;
     text-align: center;
     background-color: var(--main-background-color);
     color: var(--main-text-color);
@@ -129,47 +133,25 @@ main{
     align-items: center;
 }
 
-#articles{
-
-}
-
-.img-news{
-    height: 80vh;
-}
-
-.img-news img{
-
-}
-
-.text-news{
-    height: 20vh;
-}
-
-.text-plus{
-}
-
-.img-news, .text-news{
-
-}
-
-.score-news{
+.container{
+    min-width: 100%;
+    min-height: 100vh;   
     display: flex;
-    justify-content: flex-end;
-    align-items: center;    
-    font-size: xx-large;
-    font-weight: 500;
+    justify-content: center;
 }
 
-.score-news img{
-    width: 20%;
+#articles{
+    justify-content: center;
 }
 
-.plus-news{
-
+.article-link{
+    width: fit-content;
+    height: fit-content;
 }
 
-.plus-news img{
-    width: 15%;
+.article{
+    display: inline;
+    justify-content: center;
 }
 
 .bNews:hover{
@@ -184,10 +166,12 @@ main{
     width: 25%;
     height: 60vh;
     display: inline-flex;
+    flex-wrap: wrap;
+    margin: 2vh;
+    justify-content: center;
     border: 2px solid transparent; 
     border-radius: 5%;
-    margin: 2vh;
-    padding: 2vh;
+    
 }
 
 .bNews{
@@ -200,10 +184,179 @@ main{
     color: var(--text-news-color);
 }
 
+.img-news img{
+    height: 30vh;
+    max-width: 85%
+}
+
+.text-news{
+    height: 20vh;
+}
+
 .news-content {
     max-height: 6vh;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.score-news{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;    
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.score-news img{
+    width: 30%;
+}
+
+.more-content img{
+    width: 30%;
+}
+
+.more-score{
+    display: flex;
+    justify-content: space-around;
+}
+
+table{
+    padding: 2%;
+}
+
+.form{
+    min-height: 50vh;
+    min-width: 60%;
+    height: fit-content;
+    padding: 2%;
+    display: inline;
+    justify-content: center;
+}
+
+h1{
+    padding: 2%;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+form{
+    width: 80%;
+    height: 60vh;
+    display: inline;
+    justify-content: center;
+}
+
+legend{
+    color: var(--main-text-color);
+    font-size: large;
+    font-weight: 500;
+}
+
+form input{
+    max-width: 210px;
+    max-height: 60px;
+    min-width: 168px;
+    min-height: 48px;
+    line-height: 60px;
+    text-align: center;
+    position: relative;
+    padding: 0;
+    margin : 2% 0 3% 3%;
+    border-radius: 10px;
+}
+
+label{
+    text-align: right;
+}
+
+fieldset input{
+    font-family: sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
+    border:transparent solid 2px;
+}
+
+span{
+    padding-top: 3%;
+    color: var(--color-span);
+}
+
+textarea{
+    max-width: 750px;
+    min-width: 200px;
+    max-height: 300px;
+    min-height: 50px;
+    border-radius: 8px;
+    font-family: sans-serif;
+}
+
+.profile{
+    display: grid;
+    justify-content: center;
+}
+
+.button-form, .login-form, .pwd-form{
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.button{
+    margin: 0 5% 5% 80%;
+    padding-bottom: 3%;
+    text-align: center;
+    text-transform: uppercase;
+    float: right;
+    font-family: sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: var(--news-background-color);
+    color: var(--text-news-color);
+    border-radius: 4%;
+    border-color: var(--detailled-text-news-background);
+    box-shadow: 1px 1px 2px var(--news-border-color);
+}
+
+td a :visited{
+    text-decoration: none;
+    color: var(--text-news-color);
+}
+td a :active{
+    text-decoration: none;
+    color: var(--text-news-color);
+}
+td a :hover{
+    box-shadow: none;
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--news-background-color);
+}
+
+.createNews :hover{
+    box-shadow: none;
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--news-background-color);
+}
+
+#login{
+    text-transform: none;
+}
+
+fieldset{
+    width: 90%;
+    padding: 2%;
+    border-radius: 2%;
+    justify-content: center;
+    text-align: center;
+    border-color: var(--footer-background-color);
 }
 
 footer{
@@ -215,4 +368,44 @@ footer{
     color: var(--footer-text-color);
     justify-content: center;
     align-items: center;
+}
+
+.thumbs {
+   display: flex; 
+   justify-content: center;
+}
+
+
+.thumbs-up img, .thumb-down img{
+    width: 60%;
+}
+
+.message{
+    padding-left: 35vh;
+    padding-right: 35vh;
+}
+
+.signaler{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .button-form, #p-sunset, #p-sunrise, .text-bolder, .text-bold, legend, body, header, ul, div, p, h1, h2, h3, label, input, textarea, span, a, td  {
+        font-size: 90%;
+    }
+    input{
+        width: 189px;
+        height: 54px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .button-form, #p-sunset, #p-sunrise, .text-bolder, .text-bold, legend, body, header, ul, div, p, h1, h2, h3, label, input, textarea, span, a, td  {
+        font-size: 80%;
+    }
+    input{
+        width: 168px;
+        height: 48px;
+    }
 }
