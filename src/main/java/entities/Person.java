@@ -17,7 +17,7 @@ public class Person implements Identifiable, Serializable{
     private Integer id;
     private String login;
     private String password;
-    private Boolean active;
+    private Boolean active = true;
 
     public Integer getId() {
         return id;
@@ -49,6 +49,14 @@ public class Person implements Identifiable, Serializable{
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void alternarActive() {
+        this.active = !this.active;
     }
 
     @Override

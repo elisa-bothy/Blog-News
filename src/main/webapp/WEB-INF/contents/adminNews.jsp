@@ -15,6 +15,7 @@
                 <th>Auteur de la news</th>
                 <th>Date de création de la news</th>
                 <th>Contenu de la news</th>
+
                 <th>Supprimer la news</th>
             </tr>
         </thead>

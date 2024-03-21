@@ -31,7 +31,7 @@ public class AdminDesactiveUser extends HttpServlet {
         } else {
             person.setActive(false);
             DAOFactory.getPersonDao().save(person);
-            request.getRequestDispatcher("/WEB-INF/admin/adminUser.jsp").forward(request, response);
+            request.getRequestDispatcher("/admin/user").forward(request, response);
         }
     }
 }
