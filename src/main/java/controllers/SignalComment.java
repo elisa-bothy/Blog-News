@@ -6,7 +6,6 @@ package controllers;
 
 import dao.CommentDao;
 import dao.DAOFactory;
-import entities.Comment;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class SignalComment extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
-            throws ServletException, IOException {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            int idNews = Integer.parseInt(req.getParameter("id"));
             int id = Integer.parseInt(req.getParameter("commId"));
             entities.Comment comment = new CommentDao().read(id);
             if (comment == null) {
@@ -33,7 +32,7 @@ public class SignalComment extends HttpServlet {
             } else {
                 comment.setState(1);
                 DAOFactory.getCommentDao().save(comment);
-                resp.sendRedirect(req.getContextPath() + "/visitor/news");
+                resp.sendRedirect(req.getContextPath() + "/visitor/news?id="+idNews);
             }
         } catch (IllegalArgumentException ex) {
             resp.sendError(404);

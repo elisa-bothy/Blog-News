@@ -25,6 +25,7 @@
                                     Signaler
                                     </span></a>
                             </p>
+                        <p><a href="<c:url value="/visitor/signalComment"/>?commId=${comment.id}&id=${requestScope.news.id}"><img src="<c:url value="/assets/photos/icons8-attention-100.png"/>" alt="alt"/></a></p>
                     </div>
                 </c:forEach>
             </c:when>
