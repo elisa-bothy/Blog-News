@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Guillaume Rostagnat
  */
-@WebServlet("/admin/signalComm")
+@WebServlet("/admin/signalComment")
 @SuppressWarnings("serial")
 public class SignalComment extends HttpServlet {
 

@@ -8,6 +8,7 @@ import dao.DAOFactory;
 import entities.Comment;
 import forms.CreateCommentFormChecker;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +35,9 @@ public class News extends HttpServlet {
                 throw new IllegalArgumentException();
             } else {
                 // Passer l'article à la page JSP
+                List<Comment> comments = (List<Comment>) DAOFactory.getCommentDao().listByNewsId(id);
                 request.setAttribute("news", news);
-                request.setAttribute("comments", DAOFactory.getCommentDao().list());
+                request.setAttribute("comments", comments);
                 request.getRequestDispatcher("/WEB-INF/visitor/news.jsp").
                         forward(request, response);
             }
