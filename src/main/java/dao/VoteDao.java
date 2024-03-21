@@ -84,7 +84,7 @@ public class VoteDao extends DAO<Vote> {
         return list;
     }
     
-    public int scoreById(int newsId) {
+    public int scoreById(Integer newsId) {
          int score = 0;
         String sql = "SELECT SUM(score) AS total_score FROM `vote` WHERE id_news = ?";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {

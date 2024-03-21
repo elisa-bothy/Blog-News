@@ -92,7 +92,7 @@ public class NewsDao extends DAO<News> {
 
     public Object listBestN(int qty) {
         ArrayList<News> list = new ArrayList<>();
-        String sql = "SELECT * FROM news NATURAL JOIN vote ORDER BY `vote`.`score` DESC LIMIT ?";
+        String sql = "SELECT *, SUM(score) AS total_score FROM news inner JOIN vote on vote.id_news = news.id GROUP BY news.id order by sum(score) desc limit ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)){
             pstmt.setInt(1, qty);
             ResultSet rs = pstmt.executeQuery();
