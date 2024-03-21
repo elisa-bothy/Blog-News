@@ -121,8 +121,7 @@ public class News implements Identifiable {
     }
 
     public int getScore() {
-        ArrayList<Vote> votes = (ArrayList<Vote>) DAOFactory.getVoteDao().list();
-        
+        return DAOFactory.getVoteDao().scoreById(getId());
     }
 
     public String getFilename() {
