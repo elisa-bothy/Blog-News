@@ -22,7 +22,9 @@ public class PersonDao extends DAO<Person> {
         Person obj = new Person();
         obj.setId(rs.getInt("id"));
         obj.setLogin(rs.getString("login"));
+        obj.setActive(rs.getBoolean("active"));
         obj.setPassword(rs.getString("password"));
+
         return obj;
 
     }
@@ -52,8 +54,8 @@ public class PersonDao extends DAO<Person> {
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, obj.getLogin());
             pstmt.setString(2, obj.getPassword());
-            pstmt.setInt(3, obj.getId());
-            pstmt.setBoolean(4, obj.getActive());
+            pstmt.setBoolean(3, obj.getActive());
+            pstmt.setInt(4, obj.getId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PersonDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,6 +76,7 @@ public class PersonDao extends DAO<Person> {
         }
         return obj;
     }
+
 
 
 }

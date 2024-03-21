@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package controllers;
 
-import dao.CommentDao;
 import dao.DAOFactory;
 import dao.PersonDao;
 import java.io.IOException;
@@ -18,10 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Igor Martellote
  */
-@WebServlet("/user/activeUser")
+@WebServlet("/admin/adminUser")
 @SuppressWarnings("serial")
-public class ActiveUser extends HttpServlet {
-
+public class AdminActiveUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,8 +31,7 @@ public class ActiveUser extends HttpServlet {
         } else {
             person.setActive(false);
             DAOFactory.getPersonDao().save(person);
-            request.getSession().invalidate();
-            response.sendRedirect(request.getContextPath() + "/visitor/index");
+            request.getRequestDispatcher("/WEB-INF/admin/adminUser.jsp").forward(request, response);
         }
     }
 }

@@ -20,8 +20,11 @@ public class ConnectFormChecker extends FormChecker<Person> {
         // hydrater le bean avec les données du formulaire
         String login = getParameter("login");
         String password = getParameter("password");
+
+
         obj.setLogin(login);
         obj.setPassword(password);
+
         // Vérifier les données du formulaire
         // Vérifier si les champs sont remplis
         if (login.trim().length() == 0) {
@@ -35,7 +38,7 @@ public class ConnectFormChecker extends FormChecker<Person> {
             // Vérifier en DB que cet utilisateur existe
             // et qu'il a donné le bon pwd
             Person read = DAOFactory.getPersonDao().read(login);
-            if (read == null || !password.equals(read.getPassword())) {
+            if (read == null || !password.equals(read.getPassword()) || read.getActive() == false) {
                 setErrors("login", "Ces informations ne nous permettent pas de vous connecter.");
             } else {
                 obj.setId(read.getId());

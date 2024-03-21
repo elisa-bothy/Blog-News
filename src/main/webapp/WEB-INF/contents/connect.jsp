@@ -17,6 +17,8 @@
             <label for="login">Login</label>
             <input id="login" name="login" value="${requestScope.bean.login}" autofocus="true">
             <div class="error">${requestScope.errors.login}</div>
+            <div class="error">${requestScope.errors.active}</div>
+
         </div>
         <div>
             <label for="pwd">Password</label>
