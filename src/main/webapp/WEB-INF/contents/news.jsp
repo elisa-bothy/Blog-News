@@ -14,15 +14,20 @@
     <h1>Commentaires</h1>
     <div class="error">${requestScope.errorMsg}</div>
     <div>
-        <c:forEach var="comment" items="${requestScope.comments}">
-            <c:if test="${requestScope.comment.id} == ${requestScope.news.id}">
-                <comment>
-                    <div>${comment.content}</div>
-                    <div class="under">&Eacute;crit par ${comment.author.login} le ${comment.created}</div>
-                    <div class="more"><a href="<c:url value="comment?id=${comment.id}"/>">Signaler</a></div>
-                </comment>
-            </c:if>
-        </c:forEach>
+        <c:choose>
+            <c:when test="${not empty requestScope.comments}">
+                <c:forEach var="comment" items="${requestScope.comments}">
+                    <div>
+                        <p>${comment.content}</p>
+                        <p>&Eacute;crit par ${comment.author.login} le ${comment.created}</p>
+                        <p><a href="<c:url value='/signalComment?id=${comment.id}'/>">Signaler</a></p>
+                    </div>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <p>Aucun commentaire disponible pour cet article.</p>
+            </c:otherwise>
+        </c:choose>        
     </div>
     <c:if test="${! empty sessionScope.user}">
         <form action="<c:url value="/visitor/news?id=${requestScope.news.id}" />" method="post">
