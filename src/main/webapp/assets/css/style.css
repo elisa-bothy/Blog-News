@@ -390,6 +390,10 @@ footer{
     justify-content: center;
 }
 
+.signaler img{
+    width: 35%;
+}
+
 @media screen and (max-width: 768px) {
     .button-form, #p-sunset, #p-sunrise, .text-bolder, .text-bold, legend, body, header, ul, div, p, h1, h2, h3, label, input, textarea, span, a, td  {
         font-size: 90%;
