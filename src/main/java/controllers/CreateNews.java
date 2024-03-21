@@ -49,7 +49,7 @@ public class CreateNews extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // on récupère l'image
         // "file" est la clé sous laquelle est envoyé le fichier (attribut name dans le HTML)
-        Part filePart = req.getPart("file");
+        Part filePart = req.getPart("filename");
         String fileName = getFilename(filePart);
         String fullPath = uploadPath + File.separator + fileName;
         filePart.write(fullPath);
