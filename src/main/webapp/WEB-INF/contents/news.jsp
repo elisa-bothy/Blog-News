@@ -11,6 +11,7 @@
     <div>
         <c:forEach var="comment" items="${requestScope.comments}">
             <comment>
+                <div class="imageNews"><img src="<c:url value="/assets/photos ${requestScope.news.filename}"/>  alt="${requestScope.news.title}"/></div>
                 <div>${comment.content}</div>
                 <div class="under">&Eacute;crit par ${comment.author.login} le ${comment.created}</div>
             </comment>

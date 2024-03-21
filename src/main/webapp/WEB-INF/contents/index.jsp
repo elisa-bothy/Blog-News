@@ -2,10 +2,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="container" id="container">
-
     <div id="articles">
         <c:if test="${user != null}">
-            <div><img src="<c:url value="/assets/photos}"/>" ${requestScope.news.filename} alt="${requestScope.news.title}"/></div>
             <a href="<c:url value="/user/createNews"/>"><span  class="button">Créer un Nouvelle News</span></a>
         </c:if>
         <c:forEach var="bNews" items="${requestScope.bestNews}">
@@ -30,6 +28,7 @@
             <article class="news">
                 <h3>${news.subject}</h3>
                 <div>&Eacute;crit par ${news.author.login} le ${news.created}</div>
+
                 <div class="news-content">${news.content}</div>
                 <div>
                     <a href=" <c:url value="article?id=${news.id} "/>" >

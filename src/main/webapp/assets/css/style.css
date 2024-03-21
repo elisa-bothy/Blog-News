@@ -112,6 +112,11 @@ main{
     align-items: center;
 }
 
+.imageNews{
+    width: 100px;
+    height: 100px;
+}
+
 footer{
     width: 100%;
     height: 3vh;

@@ -67,7 +67,7 @@ public class NewsDao extends DAO<News> {
             pstmt.setTimestamp(3, obj.getCreated());
             pstmt.setInt(4, obj.getAuthor().getId());
             pstmt.setString(5, obj.getFilename());
-            pstmt.setInt(6, obj.getId());
+            //pstmt.setInt(6, obj.getId());
 
             pstmt.executeUpdate();
         } catch (SQLException ex) {
