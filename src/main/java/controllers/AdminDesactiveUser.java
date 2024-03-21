@@ -18,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Igor Martellote
  */
-@WebServlet("/admin/adminActiveUser")
+@WebServlet("/admin/adminDesactiveUser")
 @SuppressWarnings("serial")
-public class AdminActiveUser extends HttpServlet {
+public class AdminDesactiveUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class AdminActiveUser extends HttpServlet {
         if (person == null) {
             throw new IllegalArgumentException();
         } else {
-            person.setActive(true);
+            person.setActive(false);
             DAOFactory.getPersonDao().save(person);
             request.getRequestDispatcher("/WEB-INF/admin/adminUser.jsp").forward(request, response);
         }
