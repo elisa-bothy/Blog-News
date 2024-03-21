@@ -122,8 +122,8 @@ public class News implements Identifiable {
 
     public int getScore() {
         ArrayList<Vote> votes = (ArrayList<Vote>) DAOFactory.getVoteDao().list();
-        for (Vote vote : votes) {
-            if (getId() == vote.getId_news()) {
+        for(Vote vote : votes){
+            if(vote.getId_news() == id){
                 return vote.getScore();
             }
         }

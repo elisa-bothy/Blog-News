@@ -20,7 +20,11 @@
                     <div>
                         <p>${comment.content}</p>
                         <p>&Eacute;crit par ${comment.author.login} le ${comment.created}</p>
-                        <p><a href="<c:url value='/signalComment?id=${comment.id}'/>">Signaler</a></p>
+                        <p>
+                            <a href="<c:url value="/visitor/signalComment"/>?commId=${comment.id}"><span class= "button" >
+                                    Signaler
+                                    </span></a>
+                            </p>
                     </div>
                 </c:forEach>
             </c:when>
