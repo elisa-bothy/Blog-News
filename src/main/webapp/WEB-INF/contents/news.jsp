@@ -20,7 +20,7 @@
                     <div>
                         <p>${comment.content}</p>
                         <p>&Eacute;crit par ${comment.author.login} le ${comment.created}</p>
-                        <p><a href="<c:url value='/signalComment?id=${comment.id}'/>">Signaler</a></p>
+                        <p><a href="<c:url value='/visitor/signalComm?id=${comment.id}'/>"><img src="<c:url value="/assets/photos/icons8-attention-100.png"/>" alt="alt"/></a></p>
                     </div>
                 </c:forEach>
             </c:when>

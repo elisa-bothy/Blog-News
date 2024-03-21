@@ -62,13 +62,14 @@ public class CommentDao extends DAO<Comment> {
     @Override
     protected void update(Comment obj) {
         String sql = "UPDATE " + table
-                + " SET content=?, created=?, author=?, id_news=?, WHERE id=?";
+                + " SET content=?, created=?, author=?, id_news=?, state=?, WHERE id=?";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, obj.getContent());
             pstmt.setTimestamp(2, obj.getCreated());
             pstmt.setInt(3, obj.getAuthor().getId());
             pstmt.setInt(4, obj.getId_news());
-            pstmt.setInt(5, obj.getId());
+            pstmt.setInt(5, obj.getState());
+            pstmt.setInt(6, obj.getId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,7 +95,7 @@ public class CommentDao extends DAO<Comment> {
     public Comment readContent(String content) {
         Comment obj = null;
         String sql = "SELECT * FROM " + table + " WHERE content= ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+        try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, content);
             ResultSet rs = pstmt.executeQuery();
             if (rs.first()) {
@@ -107,19 +108,19 @@ public class CommentDao extends DAO<Comment> {
     }
 
     public Collection<Comment> listByNewsId(int newsId) {
-    ArrayList<Comment> list = new ArrayList<>();
-    String sql = "SELECT * FROM " + table + " WHERE id_news = ? ORDER BY created DESC";
-    try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-        pstmt.setInt(1, newsId);
-        ResultSet rs = pstmt.executeQuery();
-        while (rs.next()) {
-            Comment obj = createObject(rs);
-            list.add(obj);
+        ArrayList<Comment> list = new ArrayList<>();
+        String sql = "SELECT * FROM " + table + " WHERE id_news = ? ORDER BY created DESC";
+        try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, newsId);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Comment obj = createObject(rs);
+                list.add(obj);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, "Erreur lors du listage des commentaires pour la news avec l'ID " + newsId + " : " + ex.getMessage());
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, "Erreur lors du listage des commentaires pour la news avec l'ID " + newsId + " : " + ex.getMessage());
+        return list;
     }
-    return list;
-}
 
 }

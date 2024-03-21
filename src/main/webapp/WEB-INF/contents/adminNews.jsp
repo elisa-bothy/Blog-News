@@ -15,19 +15,17 @@
                 <th>Auteur de la news</th>
                 <th>Date de création de la news</th>
                 <th>Contenu de la news</th>
-                <th>Valider la news</th>
-                <th>Supprimerla news</th>
+                <th>Supprimer la news</th>
             </tr>
         </thead>
         <tbody>
-        <c:forEach var="comm" items="${requestScope.allNews}">
+        <c:forEach var="news" items="${requestScope.allNews}">
             <tr>
                 <td>${news.id}</td>
                 <td><c:out value="${news.author.login}"/></td>
                 <td>${news.created}</td>
                 <td><c:out value="${news.content}"/></td>
-                <td><a href="<c:url value="/admin/validateNews"/>?commId=${news.id}"><span  class="button">Valider</span></a></td>
-                <td><a href="<c:url value="/admin/deleteNews"/>?commId=${news.id}"><span  class="button">Supprimer</span></a></td>  
+                <td><a href="<c:url value="/admin/deleteNews"/>?newsId=${news.id}"><span  class="button">Supprimer</span></a></td>  
             </tr>
         </c:forEach>
         </tbody>

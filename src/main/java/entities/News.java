@@ -65,7 +65,6 @@ public class News implements Identifiable {
         return Objects.equals(this.filename, other.filename);
     }
 
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -125,11 +124,12 @@ public class News implements Identifiable {
     public int getScore() {
         ArrayList<Vote> votes = (ArrayList<Vote>) DAOFactory.getVoteDao().list();
         for (Vote vote : votes) {
-            if (getId() == vote.getId_news()) {
+            if (vote.getId_news() == id) {
                 return vote.getScore();
             }
         }
         return 0;
+
     }
 
     public String getFilename() {

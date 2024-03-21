@@ -23,7 +23,7 @@ public class AdminUser extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       req
-                .setAttribute("users", DAOFactory.getCommentDao().list());
+                .setAttribute("users", DAOFactory.getPersonDao().list());
         req
                 .getRequestDispatcher("/WEB-INF/admin/adminUser.jsp").forward(req, resp);
     }

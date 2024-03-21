@@ -4,6 +4,8 @@
  */
 package controllers;
 
+import dao.CommentDao;
+import dao.DAOFactory;
 import entities.Comment;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -16,16 +18,24 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Guillaume Rostagnat
  */
-@WebServlet("/admin/signalComment")
+@WebServlet("/visitor/signalComm")
 @SuppressWarnings("serial")
 public class SignalComment extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("commId"));
-        entities.Comment comment = new Comment();
-        if (comment != null) {
-            comment.setState(1);
+        try {
+            int id = Integer.parseInt(req.getParameter("commId"));
+            entities.Comment comment = new CommentDao().read(id);
+            if (comment == null) {
+                throw new IllegalArgumentException();
+            } else {
+                comment.setState(1);
+                DAOFactory.getCommentDao().save(comment);
+                resp.sendRedirect(req.getContextPath() + "/visitor/news");
+            }
+        } catch (IllegalArgumentException ex) {
+            resp.sendError(404);
         }
     }
 }
