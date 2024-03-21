@@ -14,12 +14,12 @@
     <fieldset>
         <legend>Connexion</legend>
         <div>
-            <label for="login">Login</label>
-            <input id="login" name="login" value="${requestScope.bean.login}" autofocus="true">
+            <label for="login">Saisir votre email</label>
+            <input type ="email" pattern=".+@mail\.com" id="login" name="login" value="${requestScope.bean.login}" autofocus="true">
             <div class="error">${requestScope.errors.login}</div>
         </div>
         <div>
-            <label for="pwd">Password</label>
+            <label for="pwd">Saisir votre password</label>
             <input id="password" name="password" type="password">
             <div class="error">${requestScope.errors.password}</div>
         </div>
