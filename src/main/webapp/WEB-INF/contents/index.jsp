@@ -10,7 +10,7 @@
             <c:forEach var="bNews" items="${requestScope.bestNews}">
                 <article class="bNews">
                     <div class="img-news">
-                        <img src="<c:url value='/assets/photos/${news.filename}'/>" alt="${requestScope.news.title}"/>
+                        <img src="<c:url value='/assets/photos/${bNews.filename}'/>" alt="${requestScope.news.title}"/>
                     </div>
                     <div class="text-news">
                         <h3>${bNews.title}</h3>

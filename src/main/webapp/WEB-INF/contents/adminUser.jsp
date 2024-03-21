@@ -24,7 +24,8 @@
                     <td>${user.id}</td>
                     <td><c:out value="${user.login}"/></td>
                     <td><c:out value="${user.password}"/></td>
-                    <td><a href="<c:url value="/admin/eraseUser"/>?userId=${user.id}"><span  class="button">Supprimer</span></a></td> 
+                    <td><a href="<c:url value="/admin/eraseUser"/>?userId=${user.id}"><span  class="button">Supprimer</span></a></td>
+                    <td><span  class="button">Desactiver</span></a></td>
                 </c:if> 
             </tr>
         </c:forEach>
