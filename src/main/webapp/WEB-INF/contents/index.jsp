@@ -2,7 +2,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="container" id="container">
-
     <div id="articles">
         <c:if test="${! empty sessionScope.user}">
             <a href="<c:url value="/user/createNews"/>"><span  class="button">Créer un Nouvelle News</span></a>
