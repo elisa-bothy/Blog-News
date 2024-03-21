@@ -14,18 +14,39 @@
     <h1>Commentaires</h1>
     <div class="error">${requestScope.errorMsg}</div>
     <div>
+        <div class="thumbs">
+            <c:if test="${empty sessionScope.user}">
+                <a href=" <c:url value="/visitor/connect "/>">
+                    <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="thumbs-up"/>
+                </a>
+                <a href=" <c:url value="/visitor/connect "/>">
+                    <img src="<c:url value="/assets/photos/thumbs-down.png"/>" alt="thumbs-down"/>
+                </a>
+            </c:if>
+            <c:if test="${! empty sessionScope.user && sessionScope.user.id != 1}">
+                <p>${requestScope.message}</p>
+                <a href=" <c:url value="/user/thumbsUp?id=${requestScope.news.id} "/>">
+                    <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="thumbs-up"/>
+                </a>
+                <a href=" <c:url value="/user/thumbsDown?id=${requestScope.news.id} "/>">
+                    <img src="<c:url value="/assets/photos/thumbs-down.png"/>" alt="thumbs-down"/>
+                </a>
+            </c:if>
+        </div>
         <c:choose>
             <c:when test="${not empty requestScope.comments}">
                 <c:forEach var="comment" items="${requestScope.comments}">
                     <div>
                         <p>${comment.content}</p>
                         <p>&Eacute;crit par ${comment.author.login} le ${comment.created}</p>
-                        <p>
-                            <a href="<c:url value="/visitor/signalComment"/>?commId=${comment.id}"><span class= "button" >
+                        <c:if test="${comment.state != 2}">
+                            <a href="<c:url value="/visitor/signalComment"/>?commId=${comment.id}&id=${requestScope.news.id}">
+                                <img src="<c:url value="/assets/photos/icons8-attention-100.png"/>" alt="signaler"/>
+                                <span class= "button" >
                                     Signaler
-                                    </span></a>
-                            </p>
-                        <p><a href="<c:url value="/visitor/signalComment"/>?commId=${comment.id}&id=${requestScope.news.id}"><img src="<c:url value="/assets/photos/icons8-attention-100.png"/>" alt="alt"/></a></p>
+                                </span>
+                            </a>
+                        </c:if>
                     </div>
                 </c:forEach>
             </c:when>

@@ -37,7 +37,6 @@ public class SignUp extends HttpServlet {
         if (sufc.getErrors().isEmpty()) {
             HttpSession session = req.getSession();
             session.setAttribute("user", pers);
-
             req.getRequestDispatcher("/visitor/index.jsp").forward(req, resp);
         } else {
             HttpSession session = req.getSession();
