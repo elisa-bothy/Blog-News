@@ -35,8 +35,9 @@ public class News extends HttpServlet {
                 throw new IllegalArgumentException();
             } else {
                 // Passer l'article à la page JSP
+                List<Comment> comments = (List<Comment>) DAOFactory.getCommentDao().listByNewsId(id);
                 request.setAttribute("news", news);
-                request.setAttribute("comments", DAOFactory.getCommentDao().list());
+                request.setAttribute("comments", comments);
                 request.getRequestDispatcher("/WEB-INF/visitor/news.jsp").
                         forward(request, response);
             }
