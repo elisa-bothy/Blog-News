@@ -4,6 +4,8 @@
  */
 package controllers;
 
+import dao.CommentDao;
+import dao.DAOFactory;
 import entities.Comment;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -22,10 +24,18 @@ public class ValidateComm extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("commId"));
-        entities.Comment comment = new Comment();
-        if (comment != null) {
-            comment.setState(2);
+        try {
+            int id = Integer.parseInt(req.getParameter("commId"));
+            entities.Comment comment = new CommentDao().read(id);
+            if (comment == null) {
+                throw new IllegalArgumentException();
+            } else {
+                comment.setState(2);
+                DAOFactory.getCommentDao().save(comment);
+                resp.sendRedirect(req.getContextPath() + "/admin/comm");
+            }
+        } catch (IllegalArgumentException ex) {
+            resp.sendError(404);
         }
     }
 }
