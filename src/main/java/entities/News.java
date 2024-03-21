@@ -4,6 +4,7 @@
  */
 package entities;
 
+import java.awt.Image;
 import dao.DAOFactory;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -63,6 +64,7 @@ public class News implements Identifiable {
         }
         return Objects.equals(this.filename, other.filename);
     }
+
 
     @Override
     public String toString() {
