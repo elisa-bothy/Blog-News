@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class SignalComment extends HttpServlet {
 
-    @Override
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             int idNews = Integer.parseInt(req.getParameter("id"));

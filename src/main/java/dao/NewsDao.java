@@ -103,6 +103,7 @@ public class NewsDao extends DAO<News> {
                 n.setContent(rs.getString("content"));
                 n.setCreated(rs.getTimestamp("created"));
                 n.setAuthor(new PersonDao().read(rs.getInt("author")));
+                n.setFilename(rs.getString("filename"));
                 list.add(n);
             }
         } catch (SQLException ex) {
@@ -124,6 +125,7 @@ public class NewsDao extends DAO<News> {
                 n.setContent(rs.getString("content"));
                 n.setCreated(rs.getTimestamp("created"));
                 n.setAuthor(new PersonDao().read(rs.getInt("author")));
+                n.setFilename(rs.getString("filename"));
                 list.add(n);
             }
         } catch (SQLException ex) {
