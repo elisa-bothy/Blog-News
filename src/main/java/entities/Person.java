@@ -14,16 +14,15 @@ import java.util.Objects;
 @SuppressWarnings("serial")
 public class Person implements Identifiable, Serializable{
     
-    Integer id;
+    private Integer id;
     private String login;
     private String password;
+    private Boolean active;
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -32,24 +31,33 @@ public class Person implements Identifiable, Serializable{
         return login;
     }
 
-    public void setLogin(String Login) {
-        this.login = Login;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String Password) {
-        this.password = Password;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.login);
-        hash = 79 * hash + Objects.hashCode(this.password);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.login);
+        hash = 59 * hash + Objects.hashCode(this.password);
+        hash = 59 * hash + Objects.hashCode(this.active);
         return hash;
     }
 
@@ -71,7 +79,10 @@ public class Person implements Identifiable, Serializable{
         if (!Objects.equals(this.password, other.password)) {
             return false;
         }
-        return Objects.equals(this.id, other.id);
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return Objects.equals(this.active, other.active);
     }
 
     @Override
@@ -79,10 +90,12 @@ public class Person implements Identifiable, Serializable{
         StringBuilder sb = new StringBuilder();
         sb.append("Person{");
         sb.append("id=").append(id);
-        sb.append(", Login=").append(login);
-        sb.append(", Password=").append(password);
+        sb.append(", login=").append(login);
+        sb.append(", password=").append(password);
+        sb.append(", active=").append(active);
         sb.append('}');
         return sb.toString();
     }
+
      
 }

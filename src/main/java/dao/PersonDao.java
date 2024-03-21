@@ -48,11 +48,12 @@ public class PersonDao extends DAO<Person> {
     @Override
     protected void update(Person obj) {
         String sql = "UPDATE " + table
-                + " SET login=?, password=? WHERE id=?";
+                + " SET login=?, password=?, active=? WHERE id=?";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, obj.getLogin());
             pstmt.setString(2, obj.getPassword());
             pstmt.setInt(3, obj.getId());
+            pstmt.setBoolean(4, obj.getActive());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PersonDao.class.getName()).log(Level.SEVERE, null, ex);
