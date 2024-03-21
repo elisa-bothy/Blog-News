@@ -62,7 +62,7 @@ public class CommentDao extends DAO<Comment> {
     @Override
     protected void update(Comment obj) {
         String sql = "UPDATE " + table
-                + " SET content=?, created=?, author=?, id_news=?, state=?, WHERE id=?";
+                + " SET content=?, created=?, author=?, id_news=?, state=? WHERE id=?";
         try ( PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, obj.getContent());
             pstmt.setTimestamp(2, obj.getCreated());
@@ -118,7 +118,7 @@ public class CommentDao extends DAO<Comment> {
                 list.add(obj);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, "Erreur lors du listage des commentaires pour la news avec l'ID " + newsId + " : " + ex.getMessage());
+            Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, "Erreur lors du listage des commentaires pour la news avec l''ID {0} : {1}", new Object[]{newsId, ex.getMessage()});
         }
         return list;
     }
