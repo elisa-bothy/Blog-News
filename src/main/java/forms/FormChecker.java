@@ -43,7 +43,6 @@ public abstract class FormChecker<T> {
         this.messages.put(Key, value);
     }
 
-
     protected String getParameter(String key) {
         return request.getParameter(key) == null ? "" : request.getParameter(key);
     }

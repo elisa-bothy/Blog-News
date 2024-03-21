@@ -13,7 +13,8 @@ import java.util.Objects;
  * @author Guillaume Rostagnat
  */
 @SuppressWarnings("serial")
-public class Vote implements Serializable, Identifiable{
+public class Vote implements Serializable, Identifiable {
+
     private Integer id;
     private int score;
     private int id_user;
@@ -99,6 +100,4 @@ public class Vote implements Serializable, Identifiable{
         return Objects.equals(this.id, other.id);
     }
 
-    
-    
 }

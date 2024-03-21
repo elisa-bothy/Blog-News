@@ -9,18 +9,24 @@
         <div class="bestNews">
             <c:forEach var="bNews" items="${requestScope.bestNews}">
                 <article class="bNews">
-                    <img src="<c:url value="/assets/photos/icons8-fake-news-64(1).png"/>" alt="L'image de l'article"/>
-                    <h3>${bNews.title}</h3>
-                    <div>&Eacute;crit par ${bNews.author.login} le ${bNews.created}</div>
-                    <div class="news-content">${bNews.content}</div>
-                    <div>
-                        <a href=" <c:url value="article?id=${bNews.id} "/>" >
-                            <img src="<c:url value="/assets/photos/plus-jaune.png"/>" alt="En savoir plus"/>
-                        </a>
+                    <div class="img-news">
+                        <img src="<c:url value="/assets/photos/icons8-fake-news-64(1).png"/>" alt="L'image de l'article"/>
                     </div>
-                    <div class="score">
-                        ${bNews.score}
-                        <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="Pouce en l'air"/>
+                    <div class="text-news">
+                        <h3>${bNews.title}</h3>
+                        <div>&Eacute;crit par ${bNews.author.login} le ${bNews.created}</div>
+                        <div class="text-plus">
+                            <div class="news-content">${bNews.content}</div>
+                            <div class="plus-news">
+                                <a href=" <c:url value="/visitor/news?id=${bNews.id} "/>" >
+                                    <img src="<c:url value="/assets/photos/plus-jaune.png"/>" alt="En savoir plus"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="score-news">
+                            ${bNews.score}
+                            <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="Pouce en l'air"/>
+                        </div>
                     </div>
                 </article>
             </c:forEach>
@@ -28,18 +34,24 @@
         <div class="allNews">  
             <c:forEach var="news" items="${requestScope.allNews}">
                 <article class="news">
-                    <img src="<c:url value="/assets/photos/icons8-fake-news-64.png"/>" alt="L'image de l'article"/>
-                    <h3>${news.title}</h3>
-                    <div>&Eacute;crit par ${news.author.login} le ${news.created}</div>
-                    <div class="news-content">${news.content}</div>
-                    <div>
-                        <a href=" <c:url value="/visitor/news?id=${news.id} "/>" >
-                            <img src="<c:url value="/assets/photos/plus-vert.png"/>" alt="En savoir plus"/>
-                        </a>
+                    <div class="img-news">
+                        <img src="<c:url value="/assets/photos/icons8-fake-news-64.png"/>" alt="L'image de l'article"/>
                     </div>
-                    <div class="score">
-                        ${news.score}
-                        <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="Pouce en l'air"/>
+                    <div class="text-news">
+                        <h3>${news.title}</h3>
+                        <div>&Eacute;crit par ${news.author.login} le ${news.created}</div>
+                        <div class="text-plus">
+                            <div class="news-content">${news.content}</div>
+                            <div class="plus-news">
+                                <a href=" <c:url value="/visitor/news?id=${news.id} "/>" >
+                                    <img src="<c:url value="/assets/photos/plus-vert.png"/>" alt="En savoir plus"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="score-news">
+                            ${news.score}
+                            <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="Pouce en l'air"/>
+                        </div>
                     </div>
                 </article>
             </c:forEach>

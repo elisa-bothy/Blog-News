@@ -7,5 +7,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/template/template.jsp">
 <jsp:param name="title" value="Gestion des Commentaires"/>
-<jsp:param name="content" value="comm"/>
+<jsp:param name="content" value="adminComm"/>
 </jsp:include>

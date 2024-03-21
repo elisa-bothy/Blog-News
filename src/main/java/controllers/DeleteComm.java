@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Guillaume Rostagnat
  */
-@WebServlet("/admin/deletecomm")
+@WebServlet("/admin/deleteComm")
 public class DeleteComm extends HttpServlet {
 
     @Override

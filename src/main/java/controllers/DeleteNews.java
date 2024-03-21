@@ -5,7 +5,6 @@
 package controllers;
 
 import dao.NewsDao;
-import dao.PersonDao;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Guillaume Rostagnat
  */
-@WebServlet("/admin/deletenews")
+@WebServlet("/admin/deleteNews")
 @SuppressWarnings("serial")
 public class DeleteNews extends HttpServlet {
 

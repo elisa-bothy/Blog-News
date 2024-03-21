@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Guillaume Rostagnat
  */
 @WebServlet("/admin/user")
+@SuppressWarnings("serial")
 public class AdminUser extends HttpServlet{
 
     @Override

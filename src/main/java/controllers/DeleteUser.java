@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Guillaume Rostagnat
  */
-@WebServlet("/admin/deleteuser")
+@WebServlet("/admin/deleteUser")
 @SuppressWarnings("serial")
 public class DeleteUser extends HttpServlet {
 

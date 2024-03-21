@@ -11,22 +11,24 @@ import java.util.Objects;
  *
  * @author Guillaume Rostagnat
  */
-public class Comment implements Identifiable{
+public class Comment implements Identifiable {
 
     private Integer id;
     private String content;
     private Timestamp created;
+    private int state;
     private Person author;
     private int id_news;
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + Objects.hashCode(this.id);
-        hash = 13 * hash + Objects.hashCode(this.content);
-        hash = 13 * hash + Objects.hashCode(this.created);
-        hash = 13 * hash + Objects.hashCode(this.author);
-        hash = 13 * hash + this.id_news;
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.content);
+        hash = 53 * hash + Objects.hashCode(this.created);
+        hash = 53 * hash + this.state;
+        hash = 53 * hash + Objects.hashCode(this.author);
+        hash = 53 * hash + this.id_news;
         return hash;
     }
 
@@ -42,6 +44,9 @@ public class Comment implements Identifiable{
             return false;
         }
         final Comment other = (Comment) obj;
+        if (this.state != other.state) {
+            return false;
+        }
         if (this.id_news != other.id_news) {
             return false;
         }
@@ -57,13 +62,20 @@ public class Comment implements Identifiable{
         return Objects.equals(this.author, other.author);
     }
 
-    
     public int getId_news() {
         return id_news;
     }
 
     public void setId_news(int id_news) {
         this.id_news = id_news;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     @Override
@@ -73,17 +85,19 @@ public class Comment implements Identifiable{
         sb.append("id=").append(id);
         sb.append(", content=").append(content);
         sb.append(", created=").append(created);
+        sb.append(", state=").append(state);
         sb.append(", author=").append(author);
         sb.append(", id_news=").append(id_news);
         sb.append('}');
         return sb.toString();
     }
 
-   
+    @Override
     public Integer getId() {
         return id;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }

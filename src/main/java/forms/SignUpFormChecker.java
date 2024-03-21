@@ -5,8 +5,6 @@
 package forms;
 
 import dao.DAOFactory;
-import dao.PersonDao;
-import entities.Person;
 import javax.servlet.http.HttpServletRequest;
 import entities.Person;
 import dao.PersonDao;
@@ -53,9 +51,7 @@ public class SignUpFormChecker extends FormChecker<Person> {
             } else {
                 DAOFactory.getPersonDao().save(obj);
             }
-
         }
-
         //ass;ocie les msg de errors et le bean a la requete
         request.setAttribute("errors", errors);
         request.setAttribute("bean", obj);
