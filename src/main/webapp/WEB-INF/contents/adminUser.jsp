@@ -33,6 +33,7 @@
                         </c:choose>
                     </td>
                     <td><a href="<c:url value="/admin/eraseUser"/>?userId=${user.id}"><span  class="button">Supprimer</span></a></td>
+                    <td><span  class="button">Desactiver</span></a></td>
                     <c:set var="textoBotao" value="${user.active ? 'Desactiver' : 'Activer'}" />
                     <td><a href="<c:url value="/admin/admin${user.active ? 'Desactive' : 'Active'}User"/>?id=${user.id}">
                             <span class="button">${textoBotao}</span></td>
@@ -42,5 +43,4 @@
         </tbody>
     </table>
 </div>
-
 
