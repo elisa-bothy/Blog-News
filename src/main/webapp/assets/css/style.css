@@ -121,9 +121,10 @@ header .right{
 
 header img{
     position: absolute;
-    bottom: 1vh;
+    top: 0.5vh;
     left: 7%;
     width: 20%;
+    overflow: hidden;
 }
 
 main{

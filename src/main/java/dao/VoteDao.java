@@ -94,7 +94,9 @@ public class VoteDao extends DAO<Vote> {
                score = rs.getInt("total_score");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, "Erreur lors du listage des commentaires pour la news avec l''ID {0} : {1}", new Object[]{newsId, ex.getMessage()});
+            Logger.getLogger(CommentDao.class.getName())
+                    .log(Level.SEVERE, "Erreur lors du listage des commentaires pour la news avec l''ID {0} : {1}", 
+                            new Object[]{newsId, ex.getMessage()});
         }
         return score;
     }

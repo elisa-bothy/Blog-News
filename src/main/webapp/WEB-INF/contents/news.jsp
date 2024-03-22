@@ -27,7 +27,7 @@
             </div>
         </c:if>
         <c:if test="${! empty sessionScope.user && sessionScope.user.id != 1}">
-            <p>${requestScope.message}</p>
+            <div class="score-news">${requestScope.news.score}</div>
             <div class="thumbs-up">
                 <a href=" <c:url value="/user/thumbsUp?id=${requestScope.news.id} "/>">
                     <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="thumbs-up"/>
