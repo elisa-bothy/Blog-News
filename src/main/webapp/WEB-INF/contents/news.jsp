@@ -6,11 +6,38 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<main>
+<div id="container">
     <h1>${requestScope.news.title}</h1>
     <p>Auteur: ${requestScope.news.author.login}</p>
     <p>Date de création: ${requestScope.news.created}</p>
-    <p>${requestScope.news.content}</p>
+    <p class="message">${requestScope.news.content}</p>
+    <div class="thumbs">
+        <c:if test="${empty sessionScope.user}">
+            <div class="thumbs-up">
+                <a href=" <c:url value="/visitor/connect "/>">
+                    <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="thumbs-up"/>
+                </a>
+            </div>
+            <div class="thumb-down">
+                <a href=" <c:url value="/visitor/connect "/>">
+                    <img src="<c:url value="/assets/photos/thumbs-down.png"/>" alt="thumbs-down"/>
+                </a>
+            </div>
+        </c:if>
+        <c:if test="${! empty sessionScope.user && sessionScope.user.id != 1}">
+            <p>${requestScope.message}</p>
+            <div class="thumbs-up">
+                <a href=" <c:url value="/user/thumbsUp?id=${requestScope.news.id} "/>">
+                    <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="thumbs-up"/>
+                </a>
+            </div>
+            <div class="thumb-down">
+                <a href=" <c:url value="/user/thumbsDown?id=${requestScope.news.id} "/>">
+                    <img src="<c:url value="/assets/photos/thumbs-down.png"/>" alt="thumbs-down"/>
+                </a>
+            </div>
+        </c:if>
+    </div>
     <h1>Commentaires</h1>
     <div class="error">${requestScope.errorMsg}</div>
     <div>
@@ -20,12 +47,16 @@
                     <div>
                         <p>${comment.content}</p>
                         <p>&Eacute;crit par ${comment.author.login} le ${comment.created}</p>
-                        <p>
-                            <a href="<c:url value="/visitor/signalComment"/>?commId=${comment.id}"><span class= "button" >
-                                    Signaler
-                                    </span></a>
-                            </p>
-                        <p><a href="<c:url value="/visitor/signalComment"/>?commId=${comment.id}&id=${requestScope.news.id}"><img src="<c:url value="/assets/photos/icons8-attention-100.png"/>" alt="alt"/></a></p>
+                        <c:if test="${comment.state != 2}">
+                            <div class="signaler">
+                                <a href="<c:url value="/visitor/signalComment"/>?commId=${comment.id}&id=${requestScope.news.id}">
+                                    <img src="<c:url value="/assets/photos/icons8-attention-100.png"/>" alt="signaler"/>
+                                    <span class= "button" >
+                                        Signaler
+                                    </span>
+                                </a>
+                            </div>
+                        </c:if>
                     </div>
                 </c:forEach>
             </c:when>
@@ -51,5 +82,5 @@
             </div>
         </form>
     </c:if>
-</main>
+</div>
 

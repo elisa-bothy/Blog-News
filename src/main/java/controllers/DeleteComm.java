@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Guillaume Rostagnat
  */
 @WebServlet("/admin/deleteComm")
+@SuppressWarnings("serial")
 public class DeleteComm extends HttpServlet {
 
     @Override

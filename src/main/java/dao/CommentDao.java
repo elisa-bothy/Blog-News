@@ -30,6 +30,7 @@ public class CommentDao extends DAO<Comment> {
         obj.setId(rs.getInt("id"));
         obj.setContent(rs.getString("content"));
         obj.setCreated(rs.getTimestamp("created"));
+        obj.setState(rs.getInt("state"));
         obj.setAuthor(DAOFactory.getPersonDao().read(rs.getInt("author")));
         obj.setId_news(rs.getInt("id_news"));
         return obj;
