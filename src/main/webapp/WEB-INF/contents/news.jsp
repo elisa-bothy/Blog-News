@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="container">
+    <img src="<c:url value='/assets/photos/${requestScope.news.filename}'/>" alt="${requestScope.news.title}"/>
     <h1>${requestScope.news.title}</h1>
     <p>Auteur: ${requestScope.news.author.login}</p>
     <p>Date de création: ${requestScope.news.created}</p>
