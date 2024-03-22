@@ -8,19 +8,11 @@
         </c:if>
         <div class="bestNews">
             <c:forEach var="bNews" items="${requestScope.bestNews}">
-                <article class="bNews">
-                    <div class="img-news">
-                        <img src="<c:url value='/assets/photos/${bNews.filename}'/>" alt="${requestScope.news.title}"/>
-                    </div>
-                    <div class="text-news">
-                        <h3>${bNews.title}</h3>
-                        <div>&Eacute;crit par ${bNews.author.login} le ${bNews.created}</div>
-                        <div class="text-plus">
-                            <div class="news-content">${bNews.content}</div>
-                            <div class="plus-news">
-                                <a href=" <c:url value="/visitor/news?id=${bNews.id} "/>" >
-                                    <img src="<c:url value="/assets/photos/plus-jaune.png"/>" alt="En savoir plus"/>
-                                </a>
+                <div class="article">
+                    <a href=" <c:url value="/visitor/news?id=${bNews.id} "/>" class="article-link">
+                        <article class="bNews">
+                            <div class="img-news">
+                                <img src="<c:url value='/assets/photos/${bNews.filename}'/>" alt="${bNews.title}"/>
                             </div>
                             <div class="text-news">
                                 <h3>${bNews.title}</h3>
