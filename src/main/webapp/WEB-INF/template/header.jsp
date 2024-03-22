@@ -5,7 +5,7 @@
         <a href="<c:url value="/visitor/index"/>">
             <div>
                 <img src="<c:url value="/assets/photos/news.png"/>" alt="alt"/>
-                <div class="right">Bienvenue ${sessionScope.user.login}</div>
+                <div class="right">Hi ${sessionScope.user.login} !</div>
             </div>
         </a>
     </div>

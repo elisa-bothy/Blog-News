@@ -13,6 +13,7 @@
     <p class="message">${requestScope.news.content}</p>
     <div class="thumbs">
         <c:if test="${empty sessionScope.user}">
+            <div class="score-news">${requestScope.news.score}</div>
             <div class="thumbs-up">
                 <a href=" <c:url value="/visitor/connect "/>">
                     <img src="<c:url value="/assets/photos/thumbs-up.png"/>" alt="thumbs-up"/>

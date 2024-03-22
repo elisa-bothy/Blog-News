@@ -110,6 +110,11 @@ header a{
     padding-top: 3vh;
 }
 
+header .right{
+    display: flex;
+    justify-content: right;
+}
+
 .logo{
     justify-content: flex-start;
 }
@@ -118,6 +123,7 @@ header img{
     position: absolute;
     bottom: 1vh;
     left: 7%;
+    width: 20%;
 }
 
 main{

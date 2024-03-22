@@ -5,6 +5,9 @@
     <div class="ok">${requestScope.changed}</div>
     <p>Identifiant interne : ${sessionScope.user.id}</p>
     <p>Login : ${sessionScope.user.login}</p>
+    <c:if test="${user.id !=1}">
+        <a href="<c:url value="/user/activeUser"/>?id=${user.id}"><span  class="button">Desactiver</span></a>
+    </c:if>
     <section>
         <h3>Changer de mot de passe</h3>
         <form action="<c:url value="/user/profile"/>" method="post">
