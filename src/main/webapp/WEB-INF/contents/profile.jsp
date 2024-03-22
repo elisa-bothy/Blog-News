@@ -14,18 +14,15 @@
             <fieldset>
             <legend>Modifications</legend>
             <div>
-                <label for="pwd">Mot de passe actuel</label>
-                <input type="password" id="password" name="password">
+                <input placeholder="Mot de passe actuel" type="password" id="password" name="password">
                 <div class="error">${requestScope.errors.pwd}</div>
             </div>
             <div>
-                <label for="next">Nouveau mot de passe</label>
-                <input type="password" id="newPassword" name="next">
+                <input placeholder="Nouveau mot de passe" type="password" id="newPassword" name="next">
                 <div class="error">${requestScope.errors.next}</div>
             </div>
             <div>
-                <label for="verif">Vérification</label>
-                <input type="password" id="verif" name="verif">
+                <input placeholder="Vérification" type="password" id="verif" name="verif">
                 <div class="error">${requestScope.errors.verif}</div>
             </div>
         </fieldset>
