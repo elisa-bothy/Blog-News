@@ -30,8 +30,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </article>
-                    </a>
+                        </article></a>
                 </div>
             </c:forEach>
         </div>
@@ -59,8 +58,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </article>
-                    </a>
+                        </article></a>
                 </div>
             </c:forEach>
         </div>  
